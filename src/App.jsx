@@ -50,7 +50,8 @@ const App = () => {
   const [error, setError] = useState(null);
   const [activeMA, setActiveMA] = useState(30);
   const [dateRange, setDateRange] = useState(null); 
-  const [visibleLines, setVisibleLines] = useState(['revenue', 'price', 'oi']);
+  const [visibleLines1, setVisibleLines1] = useState(['revenue', 'price']); // Chart 1 toggles
+  const [visibleLines2, setVisibleLines2] = useState(['oi', 'price']);      // Chart 2 toggles
 
   const timeframes = [7, 30, 90, 180, 360];
 
@@ -62,7 +63,7 @@ const App = () => {
         setLoading(false);
       } catch (err) {
         console.error(err);
-        setError("Failed to fetch protocol data. This might be due to API rate limits.");
+        setError("Failed to fetch protocol data.");
         setLoading(false);
       }
     };
@@ -76,9 +77,7 @@ const App = () => {
 
   const latestData = useMemo(() => {
     if (rawData.length === 0) return {};
-    // Find last item with valid OI if possible, else just last item
     const lastItem = rawData[rawData.length - 1];
-    // If OI is missing in last item (e.g. today's not generated yet), look back
     const lastOIItem = [...rawData].reverse().find(d => d.openInterest > 0) || {};
     
     return {
@@ -87,8 +86,14 @@ const App = () => {
     };
   }, [rawData]);
 
-  const toggleLine = (line) => {
-    setVisibleLines(prev => 
+  const toggleLine1 = (line) => {
+    setVisibleLines1(prev => 
+      prev.includes(line) ? prev.filter(l => l !== line) : [...prev, line]
+    );
+  };
+
+  const toggleLine2 = (line) => {
+    setVisibleLines2(prev => 
       prev.includes(line) ? prev.filter(l => l !== line) : [...prev, line]
     );
   };
@@ -104,17 +109,12 @@ const App = () => {
     <div className="flex flex-col items-center justify-center min-h-screen bg-[#050505] text-red-400 px-4 text-center">
       <p className="text-xl font-bold mb-2">Error</p>
       <p className="max-w-md">{error}</p>
-      <button 
-        onClick={() => window.location.reload()}
-        className="mt-6 px-6 py-2 bg-gray-900 border border-gray-800 rounded-xl text-white hover:bg-gray-800 transition-all"
-      >
-        Retry
-      </button>
+      <button onClick={() => window.location.reload()} className="mt-6 px-6 py-2 bg-gray-900 border border-gray-800 rounded-xl text-white hover:bg-gray-800 transition-all">Retry</button>
     </div>
   );
 
   return (
-    <div className="min-h-screen bg-[#050505] text-white font-sans selection:bg-aqua/30">
+    <div className="min-h-screen bg-[#050505] text-white font-sans selection:bg-aqua/30 pb-20">
       <div className="max-w-7xl mx-auto px-4 py-8">
         
         {/* Header */}
@@ -129,12 +129,12 @@ const App = () => {
               </h1>
             </div>
             <p className="text-gray-400 max-w-2xl">
-              Tracking HYPE price, Protocol Revenue, and Open Interest.
+              Protocol metrics: Annualized Revenue and Open Interest vs HYPE Price.
             </p>
           </div>
           
           <div className="flex flex-col sm:flex-row gap-4">
-            {/* Date Range Selector */}
+            {/* Global Controls */}
             <div className="bg-[#111] border border-gray-800 rounded-xl p-1 flex">
               {RANGE_OPTIONS.map(opt => (
                 <button
@@ -150,8 +150,6 @@ const App = () => {
                 </button>
               ))}
             </div>
-
-            {/* MA Selector */}
             <div className="bg-[#111] border border-gray-800 rounded-xl p-1 flex overflow-x-auto">
               {timeframes.map(tf => (
                 <button
@@ -170,111 +168,83 @@ const App = () => {
           </div>
         </header>
 
-        {/* Top Stats */}
+        {/* Stats Cards */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-          <div 
-            onClick={() => toggleLine('price')}
-            className={`bg-[#0A0A0A] border p-6 rounded-2xl cursor-pointer transition-all ${
-              visibleLines.includes('price') ? 'border-white/20' : 'border-gray-800/50 opacity-50'
-            }`}
-          >
+          {/* Price Card */}
+          <div className="bg-[#0A0A0A] border border-gray-800/50 p-6 rounded-2xl">
             <div className="flex items-center justify-between mb-4">
               <p className="text-gray-500 text-sm font-medium uppercase tracking-wider">HYPE Price</p>
               <DollarSign size={16} className="text-white" />
             </div>
             <h3 className="text-3xl font-bold">{formatPrice(latestData.price)}</h3>
             <div className="mt-2 text-xs text-gray-500 flex items-center gap-1">
-              <Calendar size={12} />
-              {latestData.date}
+              <Calendar size={12} /> {latestData.date}
             </div>
           </div>
 
-          <div 
-            onClick={() => toggleLine('revenue')}
-            className={`bg-[#0A0A0A] border p-6 rounded-2xl cursor-pointer transition-all ${
-              visibleLines.includes('revenue') ? 'border-aqua/20' : 'border-gray-800/50 opacity-50'
-            }`}
-          >
+          {/* Revenue Card */}
+          <div className="bg-[#0A0A0A] border border-gray-800/50 p-6 rounded-2xl">
             <div className="flex items-center justify-between mb-4">
               <p className="text-gray-500 text-sm font-medium uppercase tracking-wider">Ann. Rev ({activeMA}d)</p>
               <TrendingUp size={16} className="text-aqua" />
             </div>
             <h3 className="text-3xl font-bold text-aqua">{formatCurrency(latestData[`annualized${activeMA}d`])}</h3>
-            <div className="mt-2 text-xs text-gray-500">
-              Avg fees over {activeMA}d × 365
-            </div>
+            <div className="mt-2 text-xs text-gray-500">Avg fees over {activeMA}d × 365</div>
           </div>
 
-          <div 
-            onClick={() => toggleLine('oi')}
-            className={`bg-[#0A0A0A] border p-6 rounded-2xl cursor-pointer transition-all ${
-              visibleLines.includes('oi') ? 'border-purple-500/20' : 'border-gray-800/50 opacity-50'
-            }`}
-          >
+          {/* OI Card */}
+          <div className="bg-[#0A0A0A] border border-gray-800/50 p-6 rounded-2xl">
             <div className="flex items-center justify-between mb-4">
               <p className="text-gray-500 text-sm font-medium uppercase tracking-wider">Open Interest</p>
               <BarChart2 size={16} className="text-purple-400" />
             </div>
             <h3 className="text-3xl font-bold text-purple-400">{formatCurrency(latestData.latestOI)}</h3>
-            <div className="mt-2 text-xs text-gray-500">
-              Total OI across all perps
-            </div>
+            <div className="mt-2 text-xs text-gray-500">Total OI (Archive + Live)</div>
           </div>
 
+          {/* Fees Card */}
           <div className="bg-[#0A0A0A] border border-gray-800/50 p-6 rounded-2xl">
             <div className="flex items-center justify-between mb-4">
-              <p className="text-gray-500 text-sm font-medium uppercase tracking-wider">Daily Protocol Fees</p>
+              <p className="text-gray-500 text-sm font-medium uppercase tracking-wider">Daily Fees</p>
               <Info size={16} className="text-gray-400" />
             </div>
             <h3 className="text-3xl font-bold">{formatCurrency(latestData.dailyFees)}</h3>
-            <div className="mt-2 text-xs text-gray-500">
-              Raw fees collected (24h)
-            </div>
+            <div className="mt-2 text-xs text-gray-500">Raw fees collected (24h)</div>
           </div>
         </div>
 
-        {/* Main Chart */}
+        {/* CHART 1: Price vs Annualized Revenue */}
         <div className="bg-[#0A0A0A] border border-gray-800/50 rounded-3xl p-4 md:p-8 shadow-2xl mb-8">
-          <div className="flex flex-col sm:flex-row items-center justify-between mb-8 gap-4">
+          <div className="flex items-center justify-between mb-6">
             <h2 className="text-xl font-bold flex items-center gap-2">
-              Metrics Over Time
-              <span className="px-2 py-0.5 rounded-full bg-gray-900 border border-gray-800 text-[10px] text-gray-400 uppercase tracking-tighter">
-                {dateRange ? `${dateRange} Days` : 'All Time'}
-              </span>
+              <TrendingUp size={20} className="text-aqua" />
+              Annualized Revenue vs Price
             </h2>
-            <div className="flex gap-4 text-[10px] font-bold uppercase tracking-widest text-gray-500">
-              {visibleLines.includes('revenue') && (
-                <div className="flex items-center gap-2">
-                  <div className="w-3 border-t-2 border-dashed border-white"></div>
-                  Rev (L)
-                </div>
-              )}
-              {visibleLines.includes('oi') && (
-                <div className="flex items-center gap-2 text-purple-400">
-                  <div className="w-3 h-0.5 bg-purple-500"></div>
-                  OI (L)
-                </div>
-              )}
-              {visibleLines.includes('price') && (
-                <div className="flex items-center gap-2 text-aqua">
-                  <div className="w-3 h-0.5 bg-aqua"></div>
-                  Price (R)
-                </div>
-              )}
+            <div className="flex gap-4 text-[10px] font-bold uppercase tracking-widest text-gray-500 cursor-pointer select-none">
+              <div 
+                onClick={() => toggleLine1('revenue')} 
+                className={`flex items-center gap-2 ${visibleLines1.includes('revenue') ? 'text-white' : 'text-gray-600'}`}
+              >
+                <div className="w-3 border-t-2 border-dashed border-current"></div>
+                Rev (L)
+              </div>
+              <div 
+                onClick={() => toggleLine1('price')} 
+                className={`flex items-center gap-2 ${visibleLines1.includes('price') ? 'text-aqua' : 'text-gray-600'}`}
+              >
+                <div className="w-3 h-0.5 bg-current"></div>
+                Price (R)
+              </div>
             </div>
           </div>
           
-          <div className="h-[350px] md:h-[500px] w-full">
+          <div className="h-[400px] w-full">
             <ResponsiveContainer width="100%" height="100%">
               <ComposedChart data={filteredData} margin={{ top: 10, right: 0, left: -20, bottom: 0 }}>
                 <defs>
-                  <linearGradient id="colorPrice" x1="0" y1="0" x2="0" y2="1">
+                  <linearGradient id="colorPrice1" x1="0" y1="0" x2="0" y2="1">
                     <stop offset="5%" stopColor={COLORS[activeMA]} stopOpacity={0.2}/>
                     <stop offset="95%" stopColor={COLORS[activeMA]} stopOpacity={0}/>
-                  </linearGradient>
-                  <linearGradient id="colorOI" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#A855F7" stopOpacity={0.1}/>
-                    <stop offset="95%" stopColor="#A855F7" stopOpacity={0}/>
                   </linearGradient>
                 </defs>
                 <CartesianGrid strokeDasharray="3 3" stroke="#1A1A1A" vertical={false} />
@@ -284,28 +254,18 @@ const App = () => {
                   fontSize={10} 
                   tickMargin={15}
                   axisLine={false}
-                  tickFormatter={(str) => {
-                    const date = new Date(str);
-                    return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-                  }}
+                  tickFormatter={(str) => new Date(str).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
                   minTickGap={30}
                 />
-                
-                {/* Left Axis: Revenue & OI */}
                 <YAxis 
                   yAxisId="left"
                   stroke="#FFF" 
                   fontSize={10} 
                   axisLine={false}
                   tickLine={false}
-                  tickFormatter={(val) => {
-                    if (val >= 1000000000) return `$${(val / 1000000000).toFixed(1)}B`;
-                    if (val >= 1000000) return `$${(val / 1000000).toFixed(0)}M`;
-                    return val;
-                  }}
+                  tickFormatter={(val) => val >= 1e9 ? `$${(val/1e9).toFixed(1)}B` : val >= 1e6 ? `$${(val/1e6).toFixed(0)}M` : val}
+                  hide={!visibleLines1.includes('revenue')}
                 />
-
-                {/* Right Axis: Price */}
                 <YAxis 
                   yAxisId="right"
                   orientation="right"
@@ -314,28 +274,16 @@ const App = () => {
                   axisLine={false}
                   tickLine={false}
                   tickFormatter={(val) => `$${val}`}
-                  hide={!visibleLines.includes('price')}
+                  hide={!visibleLines1.includes('price')}
                 />
-
                 <Tooltip 
-                  contentStyle={{ 
-                    backgroundColor: '#0A0A0A', 
-                    border: '1px solid #333', 
-                    borderRadius: '16px',
-                    boxShadow: '0 10px 30px -5px rgba(0,0,0,0.5)',
-                    padding: '12px'
-                  }}
-                  itemStyle={{ fontSize: '13px', padding: '2px 0' }}
-                  labelStyle={{ color: '#888', fontWeight: 'bold', marginBottom: '8px', fontSize: '12px' }}
-                  cursor={{ stroke: '#333', strokeWidth: 1 }}
-                  formatter={(value, name) => {
-                    if (name.includes('Price')) return [formatPrice(value), name];
-                    return [formatCurrency(value), name];
-                  }}
+                  contentStyle={{ backgroundColor: '#0A0A0A', border: '1px solid #333', borderRadius: '16px' }}
+                  itemStyle={{ fontSize: '13px' }}
+                  labelStyle={{ color: '#888', fontWeight: 'bold', marginBottom: '8px' }}
+                  formatter={(value, name) => [name.includes('Price') ? formatPrice(value) : formatCurrency(value), name]}
                 />
                 
-                {/* Revenue Line */}
-                {visibleLines.includes('revenue') && (
+                {visibleLines1.includes('revenue') && (
                   <Line
                     yAxisId="left"
                     type="monotone"
@@ -348,9 +296,99 @@ const App = () => {
                     activeDot={{ r: 4, strokeWidth: 0, fill: '#FFF' }}
                   />
                 )}
+                {visibleLines1.includes('price') && (
+                  <Area
+                    yAxisId="right"
+                    type="monotone"
+                    dataKey="price"
+                    name="HYPE Price"
+                    stroke={COLORS[activeMA]}
+                    strokeWidth={3}
+                    fillOpacity={1}
+                    fill="url(#colorPrice1)"
+                    dot={false}
+                  />
+                )}
+              </ComposedChart>
+            </ResponsiveContainer>
+          </div>
+        </div>
 
-                {/* Open Interest Area */}
-                {visibleLines.includes('oi') && (
+        {/* CHART 2: Price vs Open Interest */}
+        <div className="bg-[#0A0A0A] border border-gray-800/50 rounded-3xl p-4 md:p-8 shadow-2xl">
+          <div className="flex items-center justify-between mb-6">
+            <h2 className="text-xl font-bold flex items-center gap-2">
+              <BarChart2 size={20} className="text-purple-400" />
+              Open Interest vs Price
+            </h2>
+            <div className="flex gap-4 text-[10px] font-bold uppercase tracking-widest text-gray-500 cursor-pointer select-none">
+              <div 
+                onClick={() => toggleLine2('oi')} 
+                className={`flex items-center gap-2 ${visibleLines2.includes('oi') ? 'text-purple-400' : 'text-gray-600'}`}
+              >
+                <div className="w-3 h-0.5 bg-purple-500"></div>
+                OI (L)
+              </div>
+              <div 
+                onClick={() => toggleLine2('price')} 
+                className={`flex items-center gap-2 ${visibleLines2.includes('price') ? 'text-aqua' : 'text-gray-600'}`}
+              >
+                <div className="w-3 h-0.5 bg-current"></div>
+                Price (R)
+              </div>
+            </div>
+          </div>
+          
+          <div className="h-[400px] w-full">
+            <ResponsiveContainer width="100%" height="100%">
+              <ComposedChart data={filteredData} margin={{ top: 10, right: 0, left: -20, bottom: 0 }}>
+                <defs>
+                  <linearGradient id="colorOI" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="5%" stopColor="#A855F7" stopOpacity={0.2}/>
+                    <stop offset="95%" stopColor="#A855F7" stopOpacity={0}/>
+                  </linearGradient>
+                  <linearGradient id="colorPrice2" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="5%" stopColor={COLORS[activeMA]} stopOpacity={0.1}/>
+                    <stop offset="95%" stopColor={COLORS[activeMA]} stopOpacity={0}/>
+                  </linearGradient>
+                </defs>
+                <CartesianGrid strokeDasharray="3 3" stroke="#1A1A1A" vertical={false} />
+                <XAxis 
+                  dataKey="date" 
+                  stroke="#444" 
+                  fontSize={10} 
+                  tickMargin={15}
+                  axisLine={false}
+                  tickFormatter={(str) => new Date(str).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
+                  minTickGap={30}
+                />
+                <YAxis 
+                  yAxisId="left"
+                  stroke="#A855F7" 
+                  fontSize={10} 
+                  axisLine={false}
+                  tickLine={false}
+                  tickFormatter={(val) => val >= 1e9 ? `$${(val/1e9).toFixed(1)}B` : val}
+                  hide={!visibleLines2.includes('oi')}
+                />
+                <YAxis 
+                  yAxisId="right"
+                  orientation="right"
+                  stroke={COLORS[activeMA]} 
+                  fontSize={10} 
+                  axisLine={false}
+                  tickLine={false}
+                  tickFormatter={(val) => `$${val}`}
+                  hide={!visibleLines2.includes('price')}
+                />
+                <Tooltip 
+                  contentStyle={{ backgroundColor: '#0A0A0A', border: '1px solid #333', borderRadius: '16px' }}
+                  itemStyle={{ fontSize: '13px' }}
+                  labelStyle={{ color: '#888', fontWeight: 'bold', marginBottom: '8px' }}
+                  formatter={(value, name) => [name.includes('Price') ? formatPrice(value) : formatCurrency(value), name]}
+                />
+                
+                {visibleLines2.includes('oi') && (
                   <Area
                     yAxisId="left"
                     type="monotone"
@@ -363,20 +401,17 @@ const App = () => {
                     dot={false}
                   />
                 )}
-
-                {/* Price Area */}
-                {visibleLines.includes('price') && (
+                {visibleLines2.includes('price') && (
                   <Area
                     yAxisId="right"
                     type="monotone"
                     dataKey="price"
                     name="HYPE Price"
                     stroke={COLORS[activeMA]}
-                    strokeWidth={3}
-                    fillOpacity={1}
-                    fill="url(#colorPrice)"
+                    strokeWidth={2}
+                    fill="url(#colorPrice2)"
+                    fillOpacity={0.5}
                     dot={false}
-                    activeDot={{ r: 6, strokeWidth: 0, fill: COLORS[activeMA] }}
                   />
                 )}
               </ComposedChart>
