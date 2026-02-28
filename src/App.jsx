@@ -1,215 +1,407 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import axios from 'axios';
 import {
-  LineChart,
+  ComposedChart,
   Line,
+  Bar,
   XAxis,
   YAxis,
   CartesianGrid,
   Tooltip,
   Legend,
   ResponsiveContainer,
-  AreaChart,
   Area
 } from 'recharts';
-import { Activity, TrendingUp, Info } from 'lucide-react';
+import { Activity, TrendingUp, Info, DollarSign, Calendar, BarChart2 } from 'lucide-react';
+import { getDashboardData } from './api';
 
-const TIMEFRAMES = [7, 14, 30, 60, 90, 180, 360];
+const RANGE_OPTIONS = [
+  { label: '1M', days: 30 },
+  { label: '3M', days: 90 },
+  { label: '6M', days: 180 },
+  { label: '12M', days: 365 },
+  { label: 'ALL', days: null }
+];
+
 const COLORS = {
   7: '#00FFFF',   // Aqua
-  14: '#7FFFD4',  // Aquamarine
   30: '#40E0D0',  // Turquoise
-  60: '#00CED1',  // DarkTurquoise
   90: '#20B2AA',  // LightSeaGreen
   180: '#48D1CC', // MediumTurquoise
   360: '#AFEEEE'  // PaleTurquoise
 };
 
 const formatCurrency = (val) => {
-  if (val >= 1000000) return `$${(val / 1000000).toFixed(2)}M`;
-  if (val >= 1000) return `$${(val / 1000).toFixed(2)}K`;
+  if (val === null || val === undefined) return 'N/A';
+  if (Math.abs(val) >= 1000000000) return `$${(val / 1000000000).toFixed(2)}B`;
+  if (Math.abs(val) >= 1000000) return `$${(val / 1000000).toFixed(2)}M`;
+  if (Math.abs(val) >= 1000) return `$${(val / 1000).toFixed(2)}K`;
+  return `$${val.toFixed(2)}`;
+};
+
+const formatPrice = (val) => {
+  if (val === null || val === undefined) return 'N/A';
+  if (val < 1) return `$${val.toFixed(4)}`;
   return `$${val.toFixed(2)}`;
 };
 
 const App = () => {
-  const [data, setData] = useState([]);
+  const [rawData, setRawData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [activeTimeframes, setActiveTimeframes] = useState([7, 30]);
+  const [activeMA, setActiveMA] = useState(30);
+  const [dateRange, setDateRange] = useState(null); 
+  const [visibleLines, setVisibleLines] = useState(['revenue', 'price', 'oi']);
+
+  const timeframes = [7, 30, 90, 180, 360];
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // Hyperliquid Info API for daily stats
-        // Endpoint: https://api.hyperliquid.xyz/info
-        // Action: "perpsMetaAndAssetCtx" or custom historical data?
-        // Actually, for historical revenue/volume we usually look at global stats.
-        // The info API provides current state. For historical, we might need to fetch from a community indexer or aggregate stats if available.
-        // Hyperliquid provides a 'globalStats' type endpoint or similar in some contexts.
-        // Let's use the public Info API 'eval' or similar if available, otherwise mock for structure if the specific historical fee endpoint is complex.
-        // For this task, I'll simulate the aggregation logic based on the requirements.
-        
-        const response = await axios.post('https://api.hyperliquid.xyz/info', {
-          type: 'sub-account-summary' // Placeholder: The requirement asks for historical fee/volume.
-          // Since there isn't a single "get all historical fees" public endpoint without pagination/indexers, 
-          // I will implement a robust fetcher that simulates the data structure expected.
-        }).catch(() => ({ data: null }));
-
-        // Generate synthetic historical data for demonstration if public API is restricted or requires auth/specific keys
-        // in a real scenario we'd use a dedicated indexer or the specific info API historical endpoints.
-        const days = 400;
-        const mockData = [];
-        let baseFee = 50000;
-        for (let i = days; i >= 0; i--) {
-          const date = new Date();
-          date.setDate(date.getDate() - i);
-          baseFee = baseFee * (1 + (Math.random() - 0.48) * 0.05); // slight upward trend
-          mockData.push({
-            time: date.toISOString().split('T')[0],
-            fee: baseFee,
-          });
-        }
-
-        const processed = mockData.map((day, idx) => {
-          const row = { time: day.time, daily: day.fee };
-          TIMEFRAMES.forEach(tf => {
-            if (idx >= tf) {
-              const slice = mockData.slice(idx - tf, idx);
-              const avg = slice.reduce((acc, curr) => acc + curr.fee, 0) / tf;
-              row[`tf${tf}`] = avg * 365;
-            } else {
-              row[`tf${tf}`] = null;
-            }
-          });
-          return row;
-        }).filter(r => r.tf7 !== null);
-
-        setData(processed);
+        const data = await getDashboardData(timeframes);
+        setRawData(data);
         setLoading(false);
       } catch (err) {
         console.error(err);
-        setError("Failed to fetch protocol data");
+        setError("Failed to fetch protocol data. This might be due to API rate limits.");
         setLoading(false);
       }
     };
-
     fetchData();
   }, []);
 
-  const toggleTimeframe = (tf) => {
-    if (activeTimeframes.includes(tf)) {
-      setActiveTimeframes(activeTimeframes.filter(t => t !== tf));
-    } else {
-      if (activeTimeframes.length < 4) {
-        setActiveTimeframes([...activeTimeframes, tf]);
-      }
-    }
+  const filteredData = useMemo(() => {
+    if (!dateRange) return rawData;
+    return rawData.slice(-dateRange);
+  }, [rawData, dateRange]);
+
+  const latestData = useMemo(() => {
+    if (rawData.length === 0) return {};
+    // Find last item with valid OI if possible, else just last item
+    const lastItem = rawData[rawData.length - 1];
+    // If OI is missing in last item (e.g. today's not generated yet), look back
+    const lastOIItem = [...rawData].reverse().find(d => d.openInterest > 0) || {};
+    
+    return {
+      ...lastItem,
+      latestOI: lastOIItem.openInterest || 0
+    };
+  }, [rawData]);
+
+  const toggleLine = (line) => {
+    setVisibleLines(prev => 
+      prev.includes(line) ? prev.filter(l => l !== line) : [...prev, line]
+    );
   };
 
   if (loading) return (
-    <div className="flex items-center justify-center min-h-screen">
-      <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-aqua"></div>
+    <div className="flex flex-col items-center justify-center min-h-screen bg-[#050505] text-white">
+      <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-aqua mb-4"></div>
+      <p className="text-gray-400 font-medium">Fetching Hyperliquid Metrics...</p>
+    </div>
+  );
+
+  if (error) return (
+    <div className="flex flex-col items-center justify-center min-h-screen bg-[#050505] text-red-400 px-4 text-center">
+      <p className="text-xl font-bold mb-2">Error</p>
+      <p className="max-w-md">{error}</p>
+      <button 
+        onClick={() => window.location.reload()}
+        className="mt-6 px-6 py-2 bg-gray-900 border border-gray-800 rounded-xl text-white hover:bg-gray-800 transition-all"
+      >
+        Retry
+      </button>
     </div>
   );
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-8">
-      <header className="mb-12 flex flex-col md:flex-row md:items-center justify-between gap-6">
-        <div>
-          <h1 className="text-4xl font-bold bg-gradient-to-r from-aqua to-aquamarine bg-clip-text text-transparent mb-2">
-            Hyperliquid Revenue
-          </h1>
-          <p className="text-gray-400 flex items-center gap-2">
-            <Activity size={16} className="text-aqua" />
-            Annualized Protocol Revenue Projection
-          </p>
-        </div>
+    <div className="min-h-screen bg-[#050505] text-white font-sans selection:bg-aqua/30">
+      <div className="max-w-7xl mx-auto px-4 py-8">
         
-        <div className="bg-[#111] border border-gray-800 rounded-2xl p-4 flex flex-wrap gap-3">
-          {TIMEFRAMES.map(tf => (
-            <button
-              key={tf}
-              onClick={() => toggleTimeframe(tf)}
-              disabled={!activeTimeframes.includes(tf) && activeTimeframes.length >= 4}
-              className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 ${
-                activeTimeframes.includes(tf)
-                  ? 'bg-aqua/20 text-aqua border border-aqua/50'
-                  : 'bg-gray-900 text-gray-500 border border-gray-800 hover:border-gray-700 disabled:opacity-30 disabled:cursor-not-allowed'
-              }`}
-            >
-              {tf}D MA
-            </button>
-          ))}
-        </div>
-      </header>
+        {/* Header */}
+        <header className="mb-12 flex flex-col lg:flex-row lg:items-end justify-between gap-8">
+          <div>
+            <div className="flex items-center gap-3 mb-3">
+              <div className="p-2 bg-aqua/10 rounded-lg">
+                <Activity size={24} className="text-aqua" />
+              </div>
+              <h1 className="text-4xl font-bold bg-gradient-to-r from-aqua to-blue-400 bg-clip-text text-transparent">
+                Hype Revenue
+              </h1>
+            </div>
+            <p className="text-gray-400 max-w-2xl">
+              Tracking HYPE price, Protocol Revenue, and Open Interest.
+            </p>
+          </div>
+          
+          <div className="flex flex-col sm:flex-row gap-4">
+            {/* Date Range Selector */}
+            <div className="bg-[#111] border border-gray-800 rounded-xl p-1 flex">
+              {RANGE_OPTIONS.map(opt => (
+                <button
+                  key={opt.label}
+                  onClick={() => setDateRange(opt.days)}
+                  className={`px-4 py-1.5 rounded-lg text-xs font-bold transition-all ${
+                    dateRange === opt.days 
+                      ? 'bg-gray-800 text-aqua shadow-sm' 
+                      : 'text-gray-500 hover:text-gray-300'
+                  }`}
+                >
+                  {opt.label}
+                </button>
+              ))}
+            </div>
 
-      <div className="grid grid-cols-1 gap-8">
-        <div className="bg-[#0A0A0A] border border-gray-800/50 rounded-3xl p-6 shadow-2xl">
-          <div className="h-[500px] w-full">
+            {/* MA Selector */}
+            <div className="bg-[#111] border border-gray-800 rounded-xl p-1 flex overflow-x-auto">
+              {timeframes.map(tf => (
+                <button
+                  key={tf}
+                  onClick={() => setActiveMA(tf)}
+                  className={`px-3 py-1.5 rounded-lg text-[10px] font-bold transition-all whitespace-nowrap ${
+                    activeMA === tf 
+                      ? 'bg-aqua text-black shadow-lg shadow-aqua/20' 
+                      : 'text-gray-500 hover:text-gray-300'
+                  }`}
+                >
+                  {tf}D MA
+                </button>
+              ))}
+            </div>
+          </div>
+        </header>
+
+        {/* Top Stats */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+          <div 
+            onClick={() => toggleLine('price')}
+            className={`bg-[#0A0A0A] border p-6 rounded-2xl cursor-pointer transition-all ${
+              visibleLines.includes('price') ? 'border-white/20' : 'border-gray-800/50 opacity-50'
+            }`}
+          >
+            <div className="flex items-center justify-between mb-4">
+              <p className="text-gray-500 text-sm font-medium uppercase tracking-wider">HYPE Price</p>
+              <DollarSign size={16} className="text-white" />
+            </div>
+            <h3 className="text-3xl font-bold">{formatPrice(latestData.price)}</h3>
+            <div className="mt-2 text-xs text-gray-500 flex items-center gap-1">
+              <Calendar size={12} />
+              {latestData.date}
+            </div>
+          </div>
+
+          <div 
+            onClick={() => toggleLine('revenue')}
+            className={`bg-[#0A0A0A] border p-6 rounded-2xl cursor-pointer transition-all ${
+              visibleLines.includes('revenue') ? 'border-aqua/20' : 'border-gray-800/50 opacity-50'
+            }`}
+          >
+            <div className="flex items-center justify-between mb-4">
+              <p className="text-gray-500 text-sm font-medium uppercase tracking-wider">Ann. Rev ({activeMA}d)</p>
+              <TrendingUp size={16} className="text-aqua" />
+            </div>
+            <h3 className="text-3xl font-bold text-aqua">{formatCurrency(latestData[`annualized${activeMA}d`])}</h3>
+            <div className="mt-2 text-xs text-gray-500">
+              Avg fees over {activeMA}d × 365
+            </div>
+          </div>
+
+          <div 
+            onClick={() => toggleLine('oi')}
+            className={`bg-[#0A0A0A] border p-6 rounded-2xl cursor-pointer transition-all ${
+              visibleLines.includes('oi') ? 'border-purple-500/20' : 'border-gray-800/50 opacity-50'
+            }`}
+          >
+            <div className="flex items-center justify-between mb-4">
+              <p className="text-gray-500 text-sm font-medium uppercase tracking-wider">Open Interest</p>
+              <BarChart2 size={16} className="text-purple-400" />
+            </div>
+            <h3 className="text-3xl font-bold text-purple-400">{formatCurrency(latestData.latestOI)}</h3>
+            <div className="mt-2 text-xs text-gray-500">
+              Total OI across all perps
+            </div>
+          </div>
+
+          <div className="bg-[#0A0A0A] border border-gray-800/50 p-6 rounded-2xl">
+            <div className="flex items-center justify-between mb-4">
+              <p className="text-gray-500 text-sm font-medium uppercase tracking-wider">Daily Protocol Fees</p>
+              <Info size={16} className="text-gray-400" />
+            </div>
+            <h3 className="text-3xl font-bold">{formatCurrency(latestData.dailyFees)}</h3>
+            <div className="mt-2 text-xs text-gray-500">
+              Raw fees collected (24h)
+            </div>
+          </div>
+        </div>
+
+        {/* Main Chart */}
+        <div className="bg-[#0A0A0A] border border-gray-800/50 rounded-3xl p-4 md:p-8 shadow-2xl mb-8">
+          <div className="flex flex-col sm:flex-row items-center justify-between mb-8 gap-4">
+            <h2 className="text-xl font-bold flex items-center gap-2">
+              Metrics Over Time
+              <span className="px-2 py-0.5 rounded-full bg-gray-900 border border-gray-800 text-[10px] text-gray-400 uppercase tracking-tighter">
+                {dateRange ? `${dateRange} Days` : 'All Time'}
+              </span>
+            </h2>
+            <div className="flex gap-4 text-[10px] font-bold uppercase tracking-widest text-gray-500">
+              {visibleLines.includes('revenue') && (
+                <div className="flex items-center gap-2">
+                  <div className="w-3 border-t-2 border-dashed border-white"></div>
+                  Rev (L)
+                </div>
+              )}
+              {visibleLines.includes('oi') && (
+                <div className="flex items-center gap-2 text-purple-400">
+                  <div className="w-3 h-0.5 bg-purple-500"></div>
+                  OI (L)
+                </div>
+              )}
+              {visibleLines.includes('price') && (
+                <div className="flex items-center gap-2 text-aqua">
+                  <div className="w-3 h-0.5 bg-aqua"></div>
+                  Price (R)
+                </div>
+              )}
+            </div>
+          </div>
+          
+          <div className="h-[350px] md:h-[500px] w-full">
             <ResponsiveContainer width="100%" height="100%">
-              <LineChart data={data}>
+              <ComposedChart data={filteredData} margin={{ top: 10, right: 0, left: -20, bottom: 0 }}>
+                <defs>
+                  <linearGradient id="colorPrice" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="5%" stopColor={COLORS[activeMA]} stopOpacity={0.2}/>
+                    <stop offset="95%" stopColor={COLORS[activeMA]} stopOpacity={0}/>
+                  </linearGradient>
+                  <linearGradient id="colorOI" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="5%" stopColor="#A855F7" stopOpacity={0.1}/>
+                    <stop offset="95%" stopColor="#A855F7" stopOpacity={0}/>
+                  </linearGradient>
+                </defs>
                 <CartesianGrid strokeDasharray="3 3" stroke="#1A1A1A" vertical={false} />
                 <XAxis 
-                  dataKey="time" 
+                  dataKey="date" 
                   stroke="#444" 
-                  fontSize={12} 
-                  tickMargin={10}
+                  fontSize={10} 
+                  tickMargin={15}
+                  axisLine={false}
                   tickFormatter={(str) => {
                     const date = new Date(str);
                     return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
                   }}
+                  minTickGap={30}
                 />
+                
+                {/* Left Axis: Revenue & OI */}
                 <YAxis 
-                  stroke="#444" 
-                  fontSize={12} 
-                  tickFormatter={formatCurrency}
-                  domain={['auto', 'auto']}
+                  yAxisId="left"
+                  stroke="#FFF" 
+                  fontSize={10} 
+                  axisLine={false}
+                  tickLine={false}
+                  tickFormatter={(val) => {
+                    if (val >= 1000000000) return `$${(val / 1000000000).toFixed(1)}B`;
+                    if (val >= 1000000) return `$${(val / 1000000).toFixed(0)}M`;
+                    return val;
+                  }}
                 />
+
+                {/* Right Axis: Price */}
+                <YAxis 
+                  yAxisId="right"
+                  orientation="right"
+                  stroke={COLORS[activeMA]} 
+                  fontSize={10} 
+                  axisLine={false}
+                  tickLine={false}
+                  tickFormatter={(val) => `$${val}`}
+                  hide={!visibleLines.includes('price')}
+                />
+
                 <Tooltip 
-                  contentStyle={{ backgroundColor: '#050505', border: '1px solid #333', borderRadius: '12px' }}
-                  itemStyle={{ fontSize: '12px' }}
-                  labelStyle={{ color: '#888', marginBottom: '4px' }}
-                  formatter={(value) => [formatCurrency(value), "Annualized Revenue"]}
+                  contentStyle={{ 
+                    backgroundColor: '#0A0A0A', 
+                    border: '1px solid #333', 
+                    borderRadius: '16px',
+                    boxShadow: '0 10px 30px -5px rgba(0,0,0,0.5)',
+                    padding: '12px'
+                  }}
+                  itemStyle={{ fontSize: '13px', padding: '2px 0' }}
+                  labelStyle={{ color: '#888', fontWeight: 'bold', marginBottom: '8px', fontSize: '12px' }}
+                  cursor={{ stroke: '#333', strokeWidth: 1 }}
+                  formatter={(value, name) => {
+                    if (name.includes('Price')) return [formatPrice(value), name];
+                    return [formatCurrency(value), name];
+                  }}
                 />
-                <Legend iconType="circle" wrapperStyle={{ paddingTop: '20px' }} />
-                {activeTimeframes.map(tf => (
+                
+                {/* Revenue Line */}
+                {visibleLines.includes('revenue') && (
                   <Line
-                    key={tf}
+                    yAxisId="left"
                     type="monotone"
-                    dataKey={`tf${tf}`}
-                    name={`${tf}D Moving Average`}
-                    stroke={COLORS[tf]}
+                    dataKey={`annualized${activeMA}d`}
+                    name={`Annualized Rev (${activeMA}d)`}
+                    stroke="#FFFFFF"
                     strokeWidth={2}
+                    strokeDasharray="5 5"
                     dot={false}
-                    activeDot={{ r: 4, strokeWidth: 0 }}
-                    animationDuration={1000}
+                    activeDot={{ r: 4, strokeWidth: 0, fill: '#FFF' }}
                   />
-                ))}
-              </LineChart>
+                )}
+
+                {/* Open Interest Area */}
+                {visibleLines.includes('oi') && (
+                  <Area
+                    yAxisId="left"
+                    type="monotone"
+                    dataKey="openInterest"
+                    name="Open Interest"
+                    stroke="#A855F7"
+                    strokeWidth={2}
+                    fill="url(#colorOI)"
+                    fillOpacity={1}
+                    dot={false}
+                  />
+                )}
+
+                {/* Price Area */}
+                {visibleLines.includes('price') && (
+                  <Area
+                    yAxisId="right"
+                    type="monotone"
+                    dataKey="price"
+                    name="HYPE Price"
+                    stroke={COLORS[activeMA]}
+                    strokeWidth={3}
+                    fillOpacity={1}
+                    fill="url(#colorPrice)"
+                    dot={false}
+                    activeDot={{ r: 6, strokeWidth: 0, fill: COLORS[activeMA] }}
+                  />
+                )}
+              </ComposedChart>
             </ResponsiveContainer>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-          {activeTimeframes.map(tf => {
-            const latest = data[data.length - 1][`tf${tf}`];
-            return (
-              <div key={tf} className="bg-[#111] border border-gray-800 p-5 rounded-2xl">
-                <p className="text-gray-500 text-xs uppercase tracking-widest mb-1">{tf} Day MA (Annualized)</p>
-                <h3 className="text-2xl font-bold text-white">{formatCurrency(latest)}</h3>
-                <div className="mt-2 flex items-center gap-1 text-[10px] text-aquamarine font-mono">
-                  <TrendingUp size={12} />
-                  PROJECTION
-                </div>
-              </div>
-            );
-          })}
-        </div>
+        <footer className="mt-16 pt-8 border-t border-gray-900 flex flex-col md:flex-row justify-between items-center gap-4 text-gray-500 text-[10px] uppercase tracking-widest font-bold">
+          <p>© 2026 Hyperliquid Community Dashboard</p>
+          <div className="flex items-center gap-6">
+            <span className="flex items-center gap-1">
+              <span className="w-1.5 h-1.5 rounded-full bg-purple-500"></span>
+              Data from Hyperliquid Archive
+            </span>
+            <a href="https://defillama.com" target="_blank" rel="noreferrer" className="flex items-center gap-1 hover:text-white transition-colors">
+              <span className="w-1.5 h-1.5 rounded-full bg-aqua"></span>
+              DefiLlama API
+            </a>
+            <a href="https://coingecko.com" target="_blank" rel="noreferrer" className="flex items-center gap-1 hover:text-white transition-colors">
+              <span className="w-1.5 h-1.5 rounded-full bg-white"></span>
+              CoinGecko API
+            </a>
+          </div>
+        </footer>
       </div>
-
-      <footer className="mt-16 pt-8 border-t border-gray-900 text-center text-gray-600 text-sm">
-        <p>Data sourced from Hyperliquid Info API • Built for the HL community</p>
-      </footer>
     </div>
   );
 };

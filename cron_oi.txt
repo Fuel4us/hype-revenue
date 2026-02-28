@@ -1,0 +1,3 @@
+# Daily OI Tracker
+# Runs at 00:30 UTC daily to fetch the previous day's archived data
+30 0 * * * cd /home/gonca/.openclaw/workspace/hype-dashboard && /usr/bin/python3 build_history.py >> /home/gonca/.openclaw/workspace/hype-dashboard/oi_tracker.log 2>&1 && /usr/bin/npm run build && /usr/bin/npx wrangler pages deploy dist --project-name=hype-revenue
