@@ -117,14 +117,9 @@ export const getDashboardData = async (timeframes = [7, 30]) => {
   if (liveOI) {
     const today = new Date().toISOString().split('T')[0];
     
-    // If today is not in history, add it to map so it gets picked up
     if (!oiMap.has(today)) {
       oiMap.set(today, liveOI);
     }
-    
-    // Optional: Linear interpolation for missing days between last history and today?
-    // For now, let's just make sure "today" has a point. 
-    // Recharts will draw a straight line connecting the last known point to today.
   }
 
   // Use revenue timestamps as the base timeline
@@ -139,22 +134,71 @@ export const getDashboardData = async (timeframes = [7, 30]) => {
     };
   }).filter(d => d.dailyFees > 0);
 
-  // If "Today" (Live OI) exists but wasn't in revenue data (e.g. DefiLlama hasn't updated for today yet),
-  // we should append a "Today" entry so the chart reaches the live point.
-  const todayDate = new Date().toISOString().split('T')[0];
-  const lastDataDate = mergedData[mergedData.length - 1]?.date;
+  // === FIX: Explicitly Backfill/Interpolate Missing OI Days ===
+  // If we have a gap between the last historical OI and today's live OI, fill it.
+  
+  // 1. Find the last day we have valid OI
+  let lastOIDateIndex = -1;
+  for (let i = mergedData.length - 1; i >= 0; i--) {
+    if (mergedData[i].openInterest) {
+      lastOIDateIndex = i;
+      break;
+    }
+  }
 
-  if (liveOI && lastDataDate !== todayDate) {
+  // 2. If we have a live OI point but gaps before it (or if live OI wasn't merged yet)
+  const todayDate = new Date().toISOString().split('T')[0];
+  
+  // Ensure "Today" is in the dataset if it's not already
+  if (liveOI && mergedData[mergedData.length - 1]?.date !== todayDate) {
     mergedData.push({
       timestamp: Math.floor(Date.now() / 1000),
       date: todayDate,
-      dailyFees: 0, // No fees yet for today/unknown
+      dailyFees: 0,
       price: priceMap.get(todayDate) || null,
       openInterest: liveOI
     });
+  } else if (liveOI && mergedData[mergedData.length - 1]?.date === todayDate) {
+      // Force update today's OI in case it was null
+      mergedData[mergedData.length - 1].openInterest = liveOI;
+  }
+
+  // 3. Interpolate the gap (Linear Interpolation)
+  // Re-find last valid OI index after potentially adding today
+  let lastValidIndex = -1;
+  for (let i = 0; i < mergedData.length; i++) {
+      if (mergedData[i].openInterest) {
+          lastValidIndex = i;
+      } else if (lastValidIndex !== -1 && i < mergedData.length) {
+          // We are in a gap!
+          // Find next valid index
+          let nextValidIndex = -1;
+          for (let j = i + 1; j < mergedData.length; j++) {
+              if (mergedData[j].openInterest) {
+                  nextValidIndex = j;
+                  break;
+              }
+          }
+
+          if (nextValidIndex !== -1) {
+              // Interpolate between lastValidIndex and nextValidIndex
+              const startOI = mergedData[lastValidIndex].openInterest;
+              const endOI = mergedData[nextValidIndex].openInterest;
+              const steps = nextValidIndex - lastValidIndex;
+              const stepValue = (endOI - startOI) / steps;
+
+              for (let k = 1; k < steps; k++) {
+                  mergedData[lastValidIndex + k].openInterest = startOI + (stepValue * k);
+              }
+              // Fast forward loop
+              i = nextValidIndex - 1; 
+              lastValidIndex = nextValidIndex;
+          }
+      }
   }
 
   mergedData.sort((a, b) => a.timestamp - b.timestamp);
+
 
   // Calculate moving averages for Revenue
   return mergedData.map((day, idx) => {
