@@ -41,9 +41,8 @@ export const fetchProtocolRevenue = async () => {
 
 /**
  * Fetches historical Open Interest from our self-hosted JSON file.
- * This file is generated daily by a backend cron job (using AWS archive data).
  */
-export const fetchOpenInterest = async () => {
+export const fetchOpenInterestHistory = async () => {
   try {
     const response = await axios.get('/oi_history.json');
     if (Array.isArray(response.data)) {
@@ -60,20 +59,48 @@ export const fetchOpenInterest = async () => {
 };
 
 /**
- * Merges price, revenue, and Open Interest data.
+ * Fetches LIVE Open Interest snapshot from Hyperliquid API.
+ */
+export const fetchLiveOpenInterest = async () => {
+  try {
+    const response = await axios.post('https://api.hyperliquid.xyz/info', {
+      type: "metaAndAssetCtxs"
+    }, {
+      headers: { 'Content-Type': 'application/json' }
+    });
+
+    const assetCtxs = response.data[1];
+    let totalOI = 0;
+
+    assetCtxs.forEach(ctx => {
+      const oi = parseFloat(ctx.openInterest);
+      const price = parseFloat(ctx.markPx);
+      totalOI += oi * price;
+    });
+
+    return totalOI;
+  } catch (error) {
+    console.error('Error fetching live OI:', error);
+    return null;
+  }
+};
+
+/**
+ * Merges price, revenue, and Open Interest (Historical + Live Gap Fill).
  */
 export const getDashboardData = async (timeframes = [7, 30]) => {
-  const [prices, revenue, oiHistory] = await Promise.all([
+  const [prices, revenue, oiHistory, liveOI] = await Promise.all([
     fetchHypePrice(),
     fetchProtocolRevenue(),
-    fetchOpenInterest()
+    fetchOpenInterestHistory(),
+    fetchLiveOpenInterest()
   ]);
 
   if (revenue.length === 0) {
       throw new Error("No revenue data found");
   }
 
-  // Create maps for quick lookup by date (Y-M-D)
+  // Create maps for quick lookup
   const priceMap = new Map();
   prices.forEach(p => {
     const date = new Date(p.timestamp * 1000).toISOString().split('T')[0];
@@ -85,10 +112,22 @@ export const getDashboardData = async (timeframes = [7, 30]) => {
     oiMap.set(d.date, d.total_oi);
   });
 
-  // Base the timeline on revenue data (usually the most consistent daily source)
-  // But we should ensure we cover the OI history too if it exists
-  
-  // Let's stick to revenue timestamps as the "backbone" to ensure alignment
+  // Handle Live OI Gap Fill
+  // If we have live OI, attach it to TODAY's date
+  if (liveOI) {
+    const today = new Date().toISOString().split('T')[0];
+    
+    // If today is not in history, add it to map so it gets picked up
+    if (!oiMap.has(today)) {
+      oiMap.set(today, liveOI);
+    }
+    
+    // Optional: Linear interpolation for missing days between last history and today?
+    // For now, let's just make sure "today" has a point. 
+    // Recharts will draw a straight line connecting the last known point to today.
+  }
+
+  // Use revenue timestamps as the base timeline
   const mergedData = revenue.map(r => {
     const date = new Date(r.timestamp * 1000).toISOString().split('T')[0];
     return {
@@ -98,7 +137,22 @@ export const getDashboardData = async (timeframes = [7, 30]) => {
       price: priceMap.get(date) || null,
       openInterest: oiMap.get(date) || null
     };
-  }).filter(d => d.dailyFees > 0); 
+  }).filter(d => d.dailyFees > 0);
+
+  // If "Today" (Live OI) exists but wasn't in revenue data (e.g. DefiLlama hasn't updated for today yet),
+  // we should append a "Today" entry so the chart reaches the live point.
+  const todayDate = new Date().toISOString().split('T')[0];
+  const lastDataDate = mergedData[mergedData.length - 1]?.date;
+
+  if (liveOI && lastDataDate !== todayDate) {
+    mergedData.push({
+      timestamp: Math.floor(Date.now() / 1000),
+      date: todayDate,
+      dailyFees: 0, // No fees yet for today/unknown
+      price: priceMap.get(todayDate) || null,
+      openInterest: liveOI
+    });
+  }
 
   mergedData.sort((a, b) => a.timestamp - b.timestamp);
 
@@ -107,6 +161,8 @@ export const getDashboardData = async (timeframes = [7, 30]) => {
     const result = { ...day };
     
     timeframes.forEach(tf => {
+      // Logic for MA calculation remains same
+      // ...
       if (idx >= tf - 1) {
         const slice = mergedData.slice(idx - tf + 1, idx + 1);
         const sumFees = slice.reduce((acc, curr) => acc + curr.dailyFees, 0);
