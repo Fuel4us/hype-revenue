@@ -1,0 +1,471 @@
+[
+  {
+    "date": "2021-02-04",
+    "timestamp": 1612396800,
+    "amount": 2400000000,
+    "circulating_after": 26962355430,
+    "source": "defillama_net"
+  },
+  {
+    "date": "2021-02-08",
+    "timestamp": 1612742400,
+    "amount": 1400000000,
+    "circulating_after": 29612355430,
+    "source": "defillama_net"
+  },
+  {
+    "date": "2021-02-10",
+    "timestamp": 1612915200,
+    "amount": 1000000000,
+    "circulating_after": 30612355430,
+    "source": "defillama_net"
+  },
+  {
+    "date": "2021-02-13",
+    "timestamp": 1613174400,
+    "amount": 1000000000,
+    "circulating_after": 31712355430,
+    "source": "defillama_net"
+  },
+  {
+    "date": "2021-02-17",
+    "timestamp": 1613520000,
+    "amount": 1000000000,
+    "circulating_after": 33112355430,
+    "source": "defillama_net"
+  },
+  {
+    "date": "2021-03-03",
+    "timestamp": 1614729600,
+    "amount": 1150000000,
+    "circulating_after": 36212355430,
+    "source": "defillama_net"
+  },
+  {
+    "date": "2021-03-10",
+    "timestamp": 1615334400,
+    "amount": 1000000000,
+    "circulating_after": 37212355430,
+    "source": "defillama_net"
+  },
+  {
+    "date": "2021-03-15",
+    "timestamp": 1615766400,
+    "amount": 1000000000,
+    "circulating_after": 38612355430,
+    "source": "defillama_net"
+  },
+  {
+    "date": "2021-03-21",
+    "timestamp": 1616284800,
+    "amount": 1000000000,
+    "circulating_after": 40210478983,
+    "source": "defillama_net"
+  },
+  {
+    "date": "2021-04-01",
+    "timestamp": 1617235200,
+    "amount": 1200000000,
+    "circulating_after": 42210478983,
+    "source": "defillama_net"
+  },
+  {
+    "date": "2021-04-06",
+    "timestamp": 1617667200,
+    "amount": 1200000000,
+    "circulating_after": 43410478983,
+    "source": "defillama_net"
+  },
+  {
+    "date": "2021-04-08",
+    "timestamp": 1617840000,
+    "amount": 1000000000,
+    "circulating_after": 44410478983,
+    "source": "defillama_net"
+  },
+  {
+    "date": "2021-04-12",
+    "timestamp": 1618185600,
+    "amount": 1000000000,
+    "circulating_after": 45410478983,
+    "source": "defillama_net"
+  },
+  {
+    "date": "2021-04-14",
+    "timestamp": 1618358400,
+    "amount": 2000000000,
+    "circulating_after": 47410478983,
+    "source": "defillama_net"
+  },
+  {
+    "date": "2021-04-17",
+    "timestamp": 1618617600,
+    "amount": 1000000000,
+    "circulating_after": 48410478983,
+    "source": "defillama_net"
+  },
+  {
+    "date": "2021-04-19",
+    "timestamp": 1618790400,
+    "amount": 2000000000,
+    "circulating_after": 50410478983,
+    "source": "defillama_net"
+  },
+  {
+    "date": "2021-05-01",
+    "timestamp": 1619827200,
+    "amount": 1000000000,
+    "circulating_after": 51910478984,
+    "source": "defillama_net"
+  },
+  {
+    "date": "2021-05-03",
+    "timestamp": 1620000000,
+    "amount": 1000000000,
+    "circulating_after": 52910478984,
+    "source": "defillama_net"
+  },
+  {
+    "date": "2021-05-05",
+    "timestamp": 1620172800,
+    "amount": 2000000000,
+    "circulating_after": 54910478984,
+    "source": "defillama_net"
+  },
+  {
+    "date": "2021-05-10",
+    "timestamp": 1620604800,
+    "amount": 1000000000,
+    "circulating_after": 55910478984,
+    "source": "defillama_net"
+  },
+  {
+    "date": "2021-05-11",
+    "timestamp": 1620691200,
+    "amount": 1000000000,
+    "circulating_after": 56910478984,
+    "source": "defillama_net"
+  },
+  {
+    "date": "2021-05-12",
+    "timestamp": 1620777600,
+    "amount": 1000000000,
+    "circulating_after": 57910478984,
+    "source": "defillama_net"
+  },
+  {
+    "date": "2021-05-18",
+    "timestamp": 1621296000,
+    "amount": 1000000000,
+    "circulating_after": 58910478984,
+    "source": "defillama_net"
+  },
+  {
+    "date": "2021-05-22",
+    "timestamp": 1621641600,
+    "amount": 1000000000,
+    "circulating_after": 59910478984,
+    "source": "defillama_net"
+  },
+  {
+    "date": "2021-05-24",
+    "timestamp": 1621814400,
+    "amount": 1000000000,
+    "circulating_after": 60910478984,
+    "source": "defillama_net"
+  },
+  {
+    "date": "2021-05-28",
+    "timestamp": 1622160000,
+    "amount": 1000000000,
+    "circulating_after": 61910478984,
+    "source": "defillama_net"
+  },
+  {
+    "date": "2021-06-01",
+    "timestamp": 1622505600,
+    "amount": 3000000000,
+    "circulating_after": 62910478984,
+    "source": "defillama_net"
+  },
+  {
+    "date": "2021-08-08",
+    "timestamp": 1628380800,
+    "amount": 1000000000,
+    "circulating_after": 62903035039,
+    "source": "defillama_net"
+  },
+  {
+    "date": "2021-08-15",
+    "timestamp": 1628985600,
+    "amount": 1000000000,
+    "circulating_after": 63903035039,
+    "source": "defillama_net"
+  },
+  {
+    "date": "2021-08-21",
+    "timestamp": 1629504000,
+    "amount": 1000000000,
+    "circulating_after": 64903035039,
+    "source": "defillama_net"
+  },
+  {
+    "date": "2021-08-23",
+    "timestamp": 1629676800,
+    "amount": 1000000000,
+    "circulating_after": 65903035039,
+    "source": "defillama_net"
+  },
+  {
+    "date": "2021-08-25",
+    "timestamp": 1629849600,
+    "amount": 2000000000,
+    "circulating_after": 65903035039,
+    "source": "defillama_net"
+  },
+  {
+    "date": "2021-09-03",
+    "timestamp": 1630627200,
+    "amount": 1000000000,
+    "circulating_after": 66866273216,
+    "source": "defillama_net"
+  },
+  {
+    "date": "2021-09-06",
+    "timestamp": 1630886400,
+    "amount": 1000000000,
+    "circulating_after": 67866273216,
+    "source": "defillama_net"
+  },
+  {
+    "date": "2021-09-07",
+    "timestamp": 1630972800,
+    "amount": 2000000000,
+    "circulating_after": 69866273216,
+    "source": "defillama_net"
+  },
+  {
+    "date": "2021-11-02",
+    "timestamp": 1635811200,
+    "amount": 1000000060,
+    "circulating_after": 70827036542,
+    "source": "defillama_net"
+  },
+  {
+    "date": "2021-11-05",
+    "timestamp": 1636070400,
+    "amount": 1000000133,
+    "circulating_after": 71827038872,
+    "source": "defillama_net"
+  },
+  {
+    "date": "2021-11-06",
+    "timestamp": 1636156800,
+    "amount": 1000002961,
+    "circulating_after": 72827041833,
+    "source": "defillama_net"
+  },
+  {
+    "date": "2021-11-08",
+    "timestamp": 1636329600,
+    "amount": 1000003341,
+    "circulating_after": 73827043696,
+    "source": "defillama_net"
+  },
+  {
+    "date": "2021-11-10",
+    "timestamp": 1636502400,
+    "amount": 2000000137,
+    "circulating_after": 74826247595,
+    "source": "defillama_net"
+  },
+  {
+    "date": "2021-11-26",
+    "timestamp": 1637884800,
+    "amount": 999996319,
+    "circulating_after": 75825324253,
+    "source": "defillama_net"
+  },
+  {
+    "date": "2021-12-04",
+    "timestamp": 1638576000,
+    "amount": 1000008938,
+    "circulating_after": 75825357980,
+    "source": "defillama_net"
+  },
+  {
+    "date": "2021-12-05",
+    "timestamp": 1638662400,
+    "amount": 999854424,
+    "circulating_after": 76825212404,
+    "source": "defillama_net"
+  },
+  {
+    "date": "2021-12-07",
+    "timestamp": 1638835200,
+    "amount": 1000280637,
+    "circulating_after": 77825497682,
+    "source": "defillama_net"
+  },
+  {
+    "date": "2021-12-10",
+    "timestamp": 1639094400,
+    "amount": 2000015215,
+    "circulating_after": 77826563879,
+    "source": "defillama_net"
+  },
+  {
+    "date": "2021-12-15",
+    "timestamp": 1639526400,
+    "amount": 1000086342,
+    "circulating_after": 78826668918,
+    "source": "defillama_net"
+  },
+  {
+    "date": "2021-12-27",
+    "timestamp": 1640563200,
+    "amount": 1000020743,
+    "circulating_after": 78326568755,
+    "source": "defillama_net"
+  },
+  {
+    "date": "2021-12-31",
+    "timestamp": 1640908800,
+    "amount": 1000031346,
+    "circulating_after": 79326548035,
+    "source": "defillama_net"
+  },
+  {
+    "date": "2023-03-18",
+    "timestamp": 1679097600,
+    "amount": 1009826992,
+    "circulating_after": 76173667892,
+    "source": "defillama_net"
+  },
+  {
+    "date": "2024-11-12",
+    "timestamp": 1731369600,
+    "amount": 1837833976,
+    "circulating_after": 125803947511,
+    "source": "defillama_net"
+  },
+  {
+    "date": "2024-11-14",
+    "timestamp": 1731542400,
+    "amount": 994196697,
+    "circulating_after": 127600317350,
+    "source": "defillama_net"
+  },
+  {
+    "date": "2024-11-15",
+    "timestamp": 1731628800,
+    "amount": 1591208563,
+    "circulating_after": 129191525913,
+    "source": "defillama_net"
+  },
+  {
+    "date": "2024-11-21",
+    "timestamp": 1732147200,
+    "amount": 1301814480,
+    "circulating_after": 131244196679,
+    "source": "defillama_net"
+  },
+  {
+    "date": "2024-11-23",
+    "timestamp": 1732320000,
+    "amount": 1313967943,
+    "circulating_after": 132873420057,
+    "source": "defillama_net"
+  },
+  {
+    "date": "2024-11-24",
+    "timestamp": 1732406400,
+    "amount": 1140021996,
+    "circulating_after": 134013442053,
+    "source": "defillama_net"
+  },
+  {
+    "date": "2024-12-07",
+    "timestamp": 1733529600,
+    "amount": 1063539843,
+    "circulating_after": 138038817923,
+    "source": "defillama_net"
+  },
+  {
+    "date": "2024-12-12",
+    "timestamp": 1733961600,
+    "amount": 1052491999,
+    "circulating_after": 140005800450,
+    "source": "defillama_net"
+  },
+  {
+    "date": "2025-02-05",
+    "timestamp": 1738713600,
+    "amount": 1346643604,
+    "circulating_after": 141281000185,
+    "source": "defillama_net"
+  },
+  {
+    "date": "2025-06-25",
+    "timestamp": 1750809600,
+    "amount": 1485630128,
+    "circulating_after": 157394434423,
+    "source": "defillama_net"
+  },
+  {
+    "date": "2025-07-17",
+    "timestamp": 1752710400,
+    "amount": 1370300093,
+    "circulating_after": 162039387242,
+    "source": "defillama_net"
+  },
+  {
+    "date": "2025-08-15",
+    "timestamp": 1755216000,
+    "amount": 1063400012,
+    "circulating_after": 166150657095,
+    "source": "defillama_net"
+  },
+  {
+    "date": "2025-08-29",
+    "timestamp": 1756425600,
+    "amount": 1045576767,
+    "circulating_after": 168429502725,
+    "source": "defillama_net"
+  },
+  {
+    "date": "2025-09-04",
+    "timestamp": 1756944000,
+    "amount": 1413664084,
+    "circulating_after": 168285427737,
+    "source": "defillama_net"
+  },
+  {
+    "date": "2025-09-05",
+    "timestamp": 1757030400,
+    "amount": 2300756292,
+    "circulating_after": 170586184029,
+    "source": "defillama_net"
+  },
+  {
+    "date": "2025-10-11",
+    "timestamp": 1760140800,
+    "amount": 1631221270,
+    "circulating_after": 179046344878,
+    "source": "defillama_net"
+  },
+  {
+    "date": "2026-02-09",
+    "timestamp": 1770595200,
+    "amount": 1085930361,
+    "circulating_after": 184542486578,
+    "source": "defillama_net"
+  },
+  {
+    "date": "2026-02-23",
+    "timestamp": 1771804800,
+    "amount": 972300000,
+    "circulating_after": 183593577216,
+    "source": "defillama_net"
+  }
+]
