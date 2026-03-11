@@ -11,8 +11,11 @@ import {
   ResponsiveContainer,
   Area
 } from 'recharts';
-import { Activity, TrendingUp, Info, DollarSign, Calendar, BarChart2 } from 'lucide-react';
+import { Activity, TrendingUp, Info, DollarSign, Calendar, BarChart2, CandlestickChart, PlayCircle } from 'lucide-react';
 import { getDashboardData } from './api';
+import TradingViewWidget from './TradingViewWidget';
+import infinityGif from './assets/infinity-hands.gif';
+import TetherMintsChart from "./TetherMintsChart";
 
 const RANGE_OPTIONS = [
   { label: '1M', days: 30 },
@@ -52,19 +55,38 @@ const App = () => {
   const [dateRange, setDateRange] = useState(null); 
   const [visibleLines1, setVisibleLines1] = useState(['revenue', 'price']); // Chart 1 toggles
   const [visibleLines2, setVisibleLines2] = useState(['oi', 'price']);      // Chart 2 toggles
+  const [showIntro, setShowIntro] = useState(() => !localStorage.getItem('hasSeenIntro'));
+  const [replayIntro, setReplayIntro] = useState(false);
 
   const timeframes = [7, 30, 90, 180, 360];
+
+  const handleReplayIntro = () => {
+    setReplayIntro(true);
+    setTimeout(() => {
+      setReplayIntro(false);
+    }, 5500);
+  };
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const data = await getDashboardData(timeframes);
         setRawData(data);
-        setLoading(false);
+        
+        if (!localStorage.getItem('hasSeenIntro')) {
+          setTimeout(() => {
+            setLoading(false);
+            setShowIntro(false);
+            localStorage.setItem('hasSeenIntro', 'true');
+          }, 3500); // Give the intro some time to play
+        } else {
+          setLoading(false);
+        }
       } catch (err) {
         console.error(err);
         setError("Failed to fetch protocol data.");
         setLoading(false);
+        setShowIntro(false);
       }
     };
     fetchData();
@@ -98,12 +120,31 @@ const App = () => {
     );
   };
 
-  if (loading) return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-[#050505] text-white">
-      <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-aqua mb-4"></div>
-      <p className="text-gray-400 font-medium">Fetching Hyperliquid Metrics...</p>
-    </div>
-  );
+  if (loading || replayIntro) {
+    const showGif = (loading && showIntro) || replayIntro;
+    
+    if (showGif) {
+      return (
+        <div className="fixed inset-0 z-50 flex flex-col items-center justify-center min-h-screen bg-[#050505] text-white">
+          <img 
+            src={infinityGif} 
+            alt="Loading Animation" 
+            className="w-48 h-48 md:w-64 md:h-64 object-cover mb-8 rounded-full shadow-[0_0_50px_rgba(0,255,255,0.3)] transition-all"
+          />
+          <p className="text-aqua/80 font-medium tracking-[0.2em] uppercase text-sm animate-pulse">
+            {replayIntro ? "Replaying..." : "Initializing..."}
+          </p>
+        </div>
+      );
+    }
+    
+    return (
+      <div className="flex flex-col items-center justify-center min-h-screen bg-[#050505] text-white">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-aqua mb-4"></div>
+        <p className="text-gray-400 font-medium">Fetching Hyperliquid Metrics...</p>
+      </div>
+    );
+  }
 
   if (error) return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-[#050505] text-red-400 px-4 text-center">
@@ -120,15 +161,22 @@ const App = () => {
         {/* Header */}
         <header className="mb-12 flex flex-col lg:flex-row lg:items-end justify-between gap-8">
           <div>
-            <div className="flex items-center gap-3 mb-3">
-              <div className="p-2 bg-aqua/10 rounded-lg">
-                <Activity size={24} className="text-aqua" />
+            <div className="flex items-center gap-4 mb-3">
+              <img src="/logo.png" alt="Logo" className="w-20 h-20 object-contain" />
+              <div className="flex items-center gap-3">
+                <h1 className="text-5xl font-bold bg-gradient-to-r from-aqua to-blue-400 bg-clip-text text-transparent pb-2 leading-tight">
+                  Hype Analytics
+                </h1>
+                <button 
+                  onClick={handleReplayIntro}
+                  className="p-2 bg-[#111] hover:bg-gray-800 border border-gray-800 rounded-full text-gray-400 hover:text-aqua transition-all mt-1"
+                  title="Replay Intro"
+                >
+                  <PlayCircle size={24} />
+                </button>
               </div>
-              <h1 className="text-4xl font-bold bg-gradient-to-r from-aqua to-blue-400 bg-clip-text text-transparent">
-                Hype Revenue
-              </h1>
             </div>
-            <p className="text-gray-400 max-w-2xl">
+            <p className="text-gray-400 max-w-2xl ml-1">
               Protocol metrics: Annualized Revenue and Open Interest vs HYPE Price.
             </p>
           </div>
@@ -315,7 +363,7 @@ const App = () => {
         </div>
 
         {/* CHART 2: Price vs Open Interest */}
-        <div className="bg-[#0A0A0A] border border-gray-800/50 rounded-3xl p-4 md:p-8 shadow-2xl">
+        <div className="bg-[#0A0A0A] border border-gray-800/50 rounded-3xl p-4 md:p-8 shadow-2xl mb-8">
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-xl font-bold flex items-center gap-2">
               <BarChart2 size={20} className="text-purple-400" />
@@ -418,6 +466,22 @@ const App = () => {
             </ResponsiveContainer>
           </div>
         </div>
+
+        {/* CHART 3: TradingView Ratio Chart */}
+        <div className="bg-[#0A0A0A] border border-gray-800/50 rounded-3xl p-4 md:p-8 shadow-2xl mb-8">
+          <div className="flex items-center justify-between mb-6">
+            <h2 className="text-xl font-bold flex items-center gap-2">
+              <CandlestickChart size={20} className="text-yellow-500" />
+              HYPE/BTC Ratio
+            </h2>
+          </div>
+          <div className="h-[500px] w-full rounded-2xl overflow-hidden border border-gray-800">
+            <TradingViewWidget />
+          </div>
+        </div>
+
+        {/* CHART 4: Tether Mints Chart */}
+        <TetherMintsChart />
 
         <footer className="mt-16 pt-8 border-t border-gray-900 flex flex-col md:flex-row justify-between items-center gap-4 text-gray-500 text-[10px] uppercase tracking-widest font-bold">
           <p>© 2026 Hyperliquid Community Dashboard</p>

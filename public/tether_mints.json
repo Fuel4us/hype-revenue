@@ -1,0 +1,471 @@
+[
+  {
+    "date": "2021-02-04",
+    "amount": 2400000000.0,
+    "timestamp": 1612396800,
+    "exact_diff": 2400000000,
+    "circulating": 26962355430
+  },
+  {
+    "date": "2021-02-08",
+    "amount": 1400000000.0,
+    "timestamp": 1612742400,
+    "exact_diff": 1400000000,
+    "circulating": 29612355430
+  },
+  {
+    "date": "2021-02-10",
+    "amount": 1000000000.0,
+    "timestamp": 1612915200,
+    "exact_diff": 1000000000,
+    "circulating": 30612355430
+  },
+  {
+    "date": "2021-02-13",
+    "amount": 1000000000.0,
+    "timestamp": 1613174400,
+    "exact_diff": 1000000000,
+    "circulating": 31712355430
+  },
+  {
+    "date": "2021-02-17",
+    "amount": 1000000000.0,
+    "timestamp": 1613520000,
+    "exact_diff": 1000000000,
+    "circulating": 33112355430
+  },
+  {
+    "date": "2021-03-03",
+    "amount": 1100000000.0,
+    "timestamp": 1614729600,
+    "exact_diff": 1150000000,
+    "circulating": 36212355430
+  },
+  {
+    "date": "2021-03-10",
+    "amount": 1000000000.0,
+    "timestamp": 1615334400,
+    "exact_diff": 1000000000,
+    "circulating": 37212355430
+  },
+  {
+    "date": "2021-03-15",
+    "amount": 1000000000.0,
+    "timestamp": 1615766400,
+    "exact_diff": 1000000000,
+    "circulating": 38612355430
+  },
+  {
+    "date": "2021-03-21",
+    "amount": 1000000000.0,
+    "timestamp": 1616284800,
+    "exact_diff": 1000000000,
+    "circulating": 40210478983
+  },
+  {
+    "date": "2021-04-01",
+    "amount": 1200000000.0,
+    "timestamp": 1617235200,
+    "exact_diff": 1200000000,
+    "circulating": 42210478983
+  },
+  {
+    "date": "2021-04-06",
+    "amount": 1200000000.0,
+    "timestamp": 1617667200,
+    "exact_diff": 1200000000,
+    "circulating": 43410478983
+  },
+  {
+    "date": "2021-04-08",
+    "amount": 1000000000.0,
+    "timestamp": 1617840000,
+    "exact_diff": 1000000000,
+    "circulating": 44410478983
+  },
+  {
+    "date": "2021-04-12",
+    "amount": 1000000000.0,
+    "timestamp": 1618185600,
+    "exact_diff": 1000000000,
+    "circulating": 45410478983
+  },
+  {
+    "date": "2021-04-14",
+    "amount": 2000000000.0,
+    "timestamp": 1618358400,
+    "exact_diff": 2000000000,
+    "circulating": 47410478983
+  },
+  {
+    "date": "2021-04-17",
+    "amount": 1000000000.0,
+    "timestamp": 1618617600,
+    "exact_diff": 1000000000,
+    "circulating": 48410478983
+  },
+  {
+    "date": "2021-04-19",
+    "amount": 2000000000.0,
+    "timestamp": 1618790400,
+    "exact_diff": 2000000000,
+    "circulating": 50410478983
+  },
+  {
+    "date": "2021-05-01",
+    "amount": 1000000000.0,
+    "timestamp": 1619827200,
+    "exact_diff": 1000000000,
+    "circulating": 51910478984
+  },
+  {
+    "date": "2021-05-03",
+    "amount": 1000000000.0,
+    "timestamp": 1620000000,
+    "exact_diff": 1000000000,
+    "circulating": 52910478984
+  },
+  {
+    "date": "2021-05-05",
+    "amount": 2000000000.0,
+    "timestamp": 1620172800,
+    "exact_diff": 2000000000,
+    "circulating": 54910478984
+  },
+  {
+    "date": "2021-05-10",
+    "amount": 1000000000.0,
+    "timestamp": 1620604800,
+    "exact_diff": 1000000000,
+    "circulating": 55910478984
+  },
+  {
+    "date": "2021-05-11",
+    "amount": 1000000000.0,
+    "timestamp": 1620691200,
+    "exact_diff": 1000000000,
+    "circulating": 56910478984
+  },
+  {
+    "date": "2021-05-12",
+    "amount": 1000000000.0,
+    "timestamp": 1620777600,
+    "exact_diff": 1000000000,
+    "circulating": 57910478984
+  },
+  {
+    "date": "2021-05-18",
+    "amount": 1000000000.0,
+    "timestamp": 1621296000,
+    "exact_diff": 1000000000,
+    "circulating": 58910478984
+  },
+  {
+    "date": "2021-05-22",
+    "amount": 1000000000.0,
+    "timestamp": 1621641600,
+    "exact_diff": 1000000000,
+    "circulating": 59910478984
+  },
+  {
+    "date": "2021-05-24",
+    "amount": 1000000000.0,
+    "timestamp": 1621814400,
+    "exact_diff": 1000000000,
+    "circulating": 60910478984
+  },
+  {
+    "date": "2021-05-28",
+    "amount": 1000000000.0,
+    "timestamp": 1622160000,
+    "exact_diff": 1000000000,
+    "circulating": 61910478984
+  },
+  {
+    "date": "2021-06-01",
+    "amount": 3000000000.0,
+    "timestamp": 1622505600,
+    "exact_diff": 3000000000,
+    "circulating": 62910478984
+  },
+  {
+    "date": "2021-08-08",
+    "amount": 1000000000.0,
+    "timestamp": 1628380800,
+    "exact_diff": 1000000000,
+    "circulating": 62903035039
+  },
+  {
+    "date": "2021-08-15",
+    "amount": 1000000000.0,
+    "timestamp": 1628985600,
+    "exact_diff": 1000000000,
+    "circulating": 63903035039
+  },
+  {
+    "date": "2021-08-21",
+    "amount": 1000000000.0,
+    "timestamp": 1629504000,
+    "exact_diff": 1000000000,
+    "circulating": 64903035039
+  },
+  {
+    "date": "2021-08-23",
+    "amount": 1000000000.0,
+    "timestamp": 1629676800,
+    "exact_diff": 1000000000,
+    "circulating": 65903035039
+  },
+  {
+    "date": "2021-08-25",
+    "amount": 2000000000.0,
+    "timestamp": 1629849600,
+    "exact_diff": 2000000000,
+    "circulating": 65903035039
+  },
+  {
+    "date": "2021-09-03",
+    "amount": 1000000000.0,
+    "timestamp": 1630627200,
+    "exact_diff": 1000000000,
+    "circulating": 66866273216
+  },
+  {
+    "date": "2021-09-06",
+    "amount": 1000000000.0,
+    "timestamp": 1630886400,
+    "exact_diff": 1000000000,
+    "circulating": 67866273216
+  },
+  {
+    "date": "2021-09-07",
+    "amount": 2000000000.0,
+    "timestamp": 1630972800,
+    "exact_diff": 2000000000,
+    "circulating": 69866273216
+  },
+  {
+    "date": "2021-11-02",
+    "amount": 1000000000.0,
+    "timestamp": 1635811200,
+    "exact_diff": 1000000060,
+    "circulating": 70827036542
+  },
+  {
+    "date": "2021-11-05",
+    "amount": 1000000000.0,
+    "timestamp": 1636070400,
+    "exact_diff": 1000000133,
+    "circulating": 71827038872
+  },
+  {
+    "date": "2021-11-06",
+    "amount": 1000000000.0,
+    "timestamp": 1636156800,
+    "exact_diff": 1000002961,
+    "circulating": 72827041833
+  },
+  {
+    "date": "2021-11-08",
+    "amount": 1000000000.0,
+    "timestamp": 1636329600,
+    "exact_diff": 1000003341,
+    "circulating": 73827043696
+  },
+  {
+    "date": "2021-11-10",
+    "amount": 2000000000.0,
+    "timestamp": 1636502400,
+    "exact_diff": 2000000137,
+    "circulating": 74826247595
+  },
+  {
+    "date": "2021-11-26",
+    "amount": 1000000000.0,
+    "timestamp": 1637884800,
+    "exact_diff": 999996319,
+    "circulating": 75825324253
+  },
+  {
+    "date": "2021-12-04",
+    "amount": 1000000000.0,
+    "timestamp": 1638576000,
+    "exact_diff": 1000008938,
+    "circulating": 75825357980
+  },
+  {
+    "date": "2021-12-05",
+    "amount": 1000000000.0,
+    "timestamp": 1638662400,
+    "exact_diff": 999854424,
+    "circulating": 76825212404
+  },
+  {
+    "date": "2021-12-07",
+    "amount": 1000000000.0,
+    "timestamp": 1638835200,
+    "exact_diff": 1000280637,
+    "circulating": 77825497682
+  },
+  {
+    "date": "2021-12-10",
+    "amount": 2000000000.0,
+    "timestamp": 1639094400,
+    "exact_diff": 2000015215,
+    "circulating": 77826563879
+  },
+  {
+    "date": "2021-12-15",
+    "amount": 1000000000.0,
+    "timestamp": 1639526400,
+    "exact_diff": 1000086342,
+    "circulating": 78826668918
+  },
+  {
+    "date": "2021-12-27",
+    "amount": 1000000000.0,
+    "timestamp": 1640563200,
+    "exact_diff": 1000020743,
+    "circulating": 78326568755
+  },
+  {
+    "date": "2021-12-31",
+    "amount": 1000000000.0,
+    "timestamp": 1640908800,
+    "exact_diff": 1000031346,
+    "circulating": 79326548035
+  },
+  {
+    "date": "2023-03-18",
+    "amount": 1000000000.0,
+    "timestamp": 1679097600,
+    "exact_diff": 1009826992,
+    "circulating": 76173667892
+  },
+  {
+    "date": "2024-11-12",
+    "amount": 1800000000.0,
+    "timestamp": 1731369600,
+    "exact_diff": 1837833976,
+    "circulating": 125803947511
+  },
+  {
+    "date": "2024-11-14",
+    "amount": 1000000000.0,
+    "timestamp": 1731542400,
+    "exact_diff": 994196697,
+    "circulating": 127600317350
+  },
+  {
+    "date": "2024-11-15",
+    "amount": 1600000000.0,
+    "timestamp": 1731628800,
+    "exact_diff": 1591208563,
+    "circulating": 129191525913
+  },
+  {
+    "date": "2024-11-21",
+    "amount": 1300000000.0,
+    "timestamp": 1732147200,
+    "exact_diff": 1301814480,
+    "circulating": 131244196679
+  },
+  {
+    "date": "2024-11-23",
+    "amount": 1300000000.0,
+    "timestamp": 1732320000,
+    "exact_diff": 1313967943,
+    "circulating": 132873420057
+  },
+  {
+    "date": "2024-11-24",
+    "amount": 1100000000.0,
+    "timestamp": 1732406400,
+    "exact_diff": 1140021996,
+    "circulating": 134013442053
+  },
+  {
+    "date": "2024-12-07",
+    "amount": 1100000000.0,
+    "timestamp": 1733529600,
+    "exact_diff": 1063539843,
+    "circulating": 138038817923
+  },
+  {
+    "date": "2024-12-12",
+    "amount": 1100000000.0,
+    "timestamp": 1733961600,
+    "exact_diff": 1052491999,
+    "circulating": 140005800450
+  },
+  {
+    "date": "2025-02-05",
+    "amount": 1300000000.0,
+    "timestamp": 1738713600,
+    "exact_diff": 1346643604,
+    "circulating": 141281000185
+  },
+  {
+    "date": "2025-06-25",
+    "amount": 1500000000.0,
+    "timestamp": 1750809600,
+    "exact_diff": 1485630128,
+    "circulating": 157394434423
+  },
+  {
+    "date": "2025-07-17",
+    "amount": 1400000000.0,
+    "timestamp": 1752710400,
+    "exact_diff": 1370300093,
+    "circulating": 162039387242
+  },
+  {
+    "date": "2025-08-15",
+    "amount": 1100000000.0,
+    "timestamp": 1755216000,
+    "exact_diff": 1063400012,
+    "circulating": 166150657095
+  },
+  {
+    "date": "2025-08-29",
+    "amount": 1000000000.0,
+    "timestamp": 1756425600,
+    "exact_diff": 1045576767,
+    "circulating": 168429502725
+  },
+  {
+    "date": "2025-09-04",
+    "amount": 1400000000.0,
+    "timestamp": 1756944000,
+    "exact_diff": 1413664084,
+    "circulating": 168285427737
+  },
+  {
+    "date": "2025-09-05",
+    "amount": 2300000000.0,
+    "timestamp": 1757030400,
+    "exact_diff": 2300756292,
+    "circulating": 170586184029
+  },
+  {
+    "date": "2025-10-11",
+    "amount": 1600000000.0,
+    "timestamp": 1760140800,
+    "exact_diff": 1631221270,
+    "circulating": 179046344878
+  },
+  {
+    "date": "2026-02-09",
+    "amount": 1100000000.0,
+    "timestamp": 1770595200,
+    "exact_diff": 1085930361,
+    "circulating": 184542486578
+  },
+  {
+    "date": "2026-02-23",
+    "amount": 1000000000.0,
+    "timestamp": 1771804800,
+    "exact_diff": 972300000,
+    "circulating": 183593577216
+  }
+]
