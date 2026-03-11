@@ -1,637 +1,1507 @@
 [
   {
-    "date": "2021-02-04",
-    "total_minted": 2400000000,
-    "chains": [
-      "tron"
-    ],
-    "num_txs": 1,
-    "transactions": []
-  },
-  {
-    "date": "2021-02-08",
-    "total_minted": 1400000000,
-    "chains": [
-      "tron"
-    ],
-    "num_txs": 1,
-    "transactions": []
-  },
-  {
-    "date": "2021-02-10",
-    "total_minted": 1000000000,
-    "chains": [
-      "ethereum"
-    ],
-    "num_txs": 1,
-    "transactions": []
-  },
-  {
-    "date": "2021-02-13",
-    "total_minted": 1500000000,
-    "chains": [
-      "ethereum",
-      "tron"
-    ],
-    "num_txs": 2,
-    "transactions": []
-  },
-  {
-    "date": "2021-02-17",
-    "total_minted": 1500000000,
-    "chains": [
-      "ethereum",
-      "tron"
-    ],
-    "num_txs": 2,
-    "transactions": []
-  },
-  {
-    "date": "2021-03-03",
-    "total_minted": 1150000000,
-    "chains": [
-      "tron"
-    ],
-    "num_txs": 1,
-    "transactions": []
-  },
-  {
-    "date": "2021-03-10",
-    "total_minted": 1000000000,
-    "chains": [
-      "ethereum"
-    ],
-    "num_txs": 1,
-    "transactions": []
-  },
-  {
-    "date": "2021-03-15",
-    "total_minted": 1000000000,
-    "chains": [
-      "ethereum"
-    ],
-    "num_txs": 1,
-    "transactions": []
-  },
-  {
-    "date": "2021-03-21",
-    "total_minted": 1000000000,
-    "chains": [
-      "ethereum"
-    ],
-    "num_txs": 1,
-    "transactions": []
-  },
-  {
-    "date": "2021-04-01",
-    "total_minted": 1700000000,
-    "chains": [
-      "ethereum",
-      "tron"
-    ],
-    "num_txs": 2,
-    "transactions": []
-  },
-  {
-    "date": "2021-04-06",
-    "total_minted": 1200000000,
-    "chains": [
-      "tron"
-    ],
-    "num_txs": 1,
-    "transactions": []
-  },
-  {
-    "date": "2021-04-08",
-    "total_minted": 2000000000,
-    "chains": [
-      "ethereum",
-      "tron"
-    ],
-    "num_txs": 2,
-    "transactions": []
-  },
-  {
-    "date": "2021-04-12",
-    "total_minted": 1000000000,
-    "chains": [
-      "tron"
-    ],
-    "num_txs": 1,
-    "transactions": []
-  },
-  {
-    "date": "2021-04-14",
-    "total_minted": 2500000000,
-    "chains": [
-      "ethereum",
-      "tron"
-    ],
-    "num_txs": 2,
-    "transactions": []
-  },
-  {
-    "date": "2021-04-17",
-    "total_minted": 1000000000,
-    "chains": [
-      "tron"
-    ],
-    "num_txs": 1,
-    "transactions": []
-  },
-  {
-    "date": "2021-04-19",
-    "total_minted": 2000000000,
-    "chains": [
-      "ethereum"
-    ],
-    "num_txs": 1,
-    "transactions": []
-  },
-  {
-    "date": "2021-05-01",
-    "total_minted": 1000000000,
-    "chains": [
-      "ethereum"
-    ],
-    "num_txs": 1,
-    "transactions": []
-  },
-  {
-    "date": "2021-05-03",
-    "total_minted": 1000000000,
-    "chains": [
-      "ethereum"
-    ],
-    "num_txs": 1,
-    "transactions": []
-  },
-  {
-    "date": "2021-05-05",
-    "total_minted": 2000000000,
-    "chains": [
-      "ethereum"
-    ],
-    "num_txs": 1,
-    "transactions": []
-  },
-  {
     "date": "2021-05-10",
-    "total_minted": 1000000000,
+    "total_minted": 1000000000.0,
     "chains": [
       "ethereum"
     ],
     "num_txs": 1,
-    "transactions": []
+    "transactions": [
+      {
+        "amount": 1000000000.0,
+        "chain": "ethereum",
+        "tx": "0x13da5ed722128830963782685db2b0e4e13adad699535cf5f1e0dfbc7eb2df5d"
+      }
+    ]
   },
   {
-    "date": "2021-05-11",
-    "total_minted": 1000000000,
+    "date": "2021-05-17",
+    "total_minted": 1000000000.0,
     "chains": [
       "ethereum"
     ],
     "num_txs": 1,
-    "transactions": []
+    "transactions": [
+      {
+        "amount": 1000000000.0,
+        "chain": "ethereum",
+        "tx": "0x5591031cf6ee66a6438954368f447be259cd8751439bc695dfc921561f739403"
+      }
+    ]
   },
   {
-    "date": "2021-05-12",
-    "total_minted": 1000000000,
+    "date": "2021-05-31",
+    "total_minted": 3000000000.0,
     "chains": [
-      "tron"
+      "ethereum"
     ],
-    "num_txs": 1,
-    "transactions": []
+    "num_txs": 3,
+    "transactions": [
+      {
+        "amount": 1000000000.0,
+        "chain": "ethereum",
+        "tx": "0x9f36efea4064cf2f2b15b3bf1f538519c80abfcd63d70c9b08491bf3c3c8a0bf"
+      },
+      {
+        "amount": 1000000000.0,
+        "chain": "ethereum",
+        "tx": "0xeeccbb3fa40d920729de71e0f8d33e65e1af3c9213786f26b28fea00ab7398b2"
+      },
+      {
+        "amount": 1000000000.0,
+        "chain": "ethereum",
+        "tx": "0xab79b408596755b4e1c6dc2dfe597c5332f5ea9b8029c5788d49b07dde8f0b41"
+      }
+    ]
   },
   {
-    "date": "2021-05-18",
-    "total_minted": 1000000000,
+    "date": "2021-08-20",
+    "total_minted": 1000000000.0,
     "chains": [
       "ethereum"
     ],
     "num_txs": 1,
-    "transactions": []
+    "transactions": [
+      {
+        "amount": 1000000000.0,
+        "chain": "ethereum",
+        "tx": "0x2329154adcdb6447f44abce231b6db4b1b2033e368da055e10393718249d86ce"
+      }
+    ]
   },
   {
-    "date": "2021-05-22",
-    "total_minted": 1000000000,
+    "date": "2021-08-24",
+    "total_minted": 2000000000.0,
     "chains": [
-      "tron"
-    ],
-    "num_txs": 1,
-    "transactions": []
-  },
-  {
-    "date": "2021-05-24",
-    "total_minted": 2000000000,
-    "chains": [
-      "ethereum",
-      "tron"
+      "ethereum"
     ],
     "num_txs": 2,
-    "transactions": []
+    "transactions": [
+      {
+        "amount": 1000000000.0,
+        "chain": "ethereum",
+        "tx": "0x061ff3fc56ea83792718c318f3c459a68a081b93967d653687486f5ec7510af5"
+      },
+      {
+        "amount": 1000000000.0,
+        "chain": "ethereum",
+        "tx": "0xad3925fb9e7c438768d5daec7fb7810768d5637e53016c24e7205e71f6ad79b4"
+      }
+    ]
   },
   {
-    "date": "2021-05-28",
-    "total_minted": 1000000000,
-    "chains": [
-      "tron"
-    ],
-    "num_txs": 1,
-    "transactions": []
-  },
-  {
-    "date": "2021-06-01",
-    "total_minted": 3500000000,
-    "chains": [
-      "ethereum",
-      "tron"
-    ],
-    "num_txs": 2,
-    "transactions": []
-  },
-  {
-    "date": "2021-08-08",
-    "total_minted": 1500000000,
-    "chains": [
-      "ethereum",
-      "tron"
-    ],
-    "num_txs": 2,
-    "transactions": []
-  },
-  {
-    "date": "2021-08-15",
-    "total_minted": 1000000000,
-    "chains": [
-      "tron"
-    ],
-    "num_txs": 1,
-    "transactions": []
-  },
-  {
-    "date": "2021-08-21",
-    "total_minted": 1000000000,
-    "chains": [
-      "tron"
-    ],
-    "num_txs": 1,
-    "transactions": []
-  },
-  {
-    "date": "2021-08-23",
-    "total_minted": 1000000000,
+    "date": "2021-11-04",
+    "total_minted": 1000000000.0,
     "chains": [
       "ethereum"
     ],
     "num_txs": 1,
-    "transactions": []
-  },
-  {
-    "date": "2021-08-25",
-    "total_minted": 2000000000,
-    "chains": [
-      "ethereum"
-    ],
-    "num_txs": 1,
-    "transactions": []
-  },
-  {
-    "date": "2021-09-03",
-    "total_minted": 1000000000,
-    "chains": [
-      "ethereum"
-    ],
-    "num_txs": 1,
-    "transactions": []
-  },
-  {
-    "date": "2021-09-06",
-    "total_minted": 1000000000,
-    "chains": [
-      "ethereum"
-    ],
-    "num_txs": 1,
-    "transactions": []
-  },
-  {
-    "date": "2021-09-07",
-    "total_minted": 2000000000,
-    "chains": [
-      "ethereum"
-    ],
-    "num_txs": 1,
-    "transactions": []
-  },
-  {
-    "date": "2021-11-02",
-    "total_minted": 1000000060,
-    "chains": [
-      "ethereum"
-    ],
-    "num_txs": 1,
-    "transactions": []
-  },
-  {
-    "date": "2021-11-05",
-    "total_minted": 2000000133,
-    "chains": [
-      "ethereum",
-      "tron"
-    ],
-    "num_txs": 2,
-    "transactions": []
-  },
-  {
-    "date": "2021-11-06",
-    "total_minted": 1500002961,
-    "chains": [
-      "ethereum",
-      "tron"
-    ],
-    "num_txs": 2,
-    "transactions": []
+    "transactions": [
+      {
+        "amount": 1000000000.0,
+        "chain": "ethereum",
+        "tx": "0x0886f1a2c8e91a9251d7986cf40e25091b8044980b3d344b87ecf33cafc3b909"
+      }
+    ]
   },
   {
     "date": "2021-11-08",
-    "total_minted": 1000003341,
+    "total_minted": 1000000000.0,
     "chains": [
       "ethereum"
     ],
     "num_txs": 1,
-    "transactions": []
+    "transactions": [
+      {
+        "amount": 1000000000.0,
+        "chain": "ethereum",
+        "tx": "0xe958206df1d984c1250f1c609de452e58cb88c9608ff22696dcc0b425bb56c9e"
+      }
+    ]
   },
   {
-    "date": "2021-11-10",
-    "total_minted": 2000000137,
-    "chains": [
-      "ethereum"
-    ],
-    "num_txs": 1,
-    "transactions": []
-  },
-  {
-    "date": "2021-11-26",
-    "total_minted": 1999996319,
-    "chains": [
-      "ethereum",
-      "tron"
-    ],
-    "num_txs": 2,
-    "transactions": []
-  },
-  {
-    "date": "2021-12-04",
-    "total_minted": 1000008938,
-    "chains": [
-      "tron"
-    ],
-    "num_txs": 1,
-    "transactions": []
-  },
-  {
-    "date": "2021-12-05",
-    "total_minted": 999854424,
-    "chains": [
-      "tron"
-    ],
-    "num_txs": 1,
-    "transactions": []
-  },
-  {
-    "date": "2021-12-07",
-    "total_minted": 1000280637,
-    "chains": [
-      "tron"
-    ],
-    "num_txs": 1,
-    "transactions": []
-  },
-  {
-    "date": "2021-12-10",
-    "total_minted": 3000015215,
-    "chains": [
-      "ethereum",
-      "tron"
-    ],
-    "num_txs": 2,
-    "transactions": []
-  },
-  {
-    "date": "2021-12-15",
-    "total_minted": 1000086342,
-    "chains": [
-      "tron"
-    ],
-    "num_txs": 1,
-    "transactions": []
-  },
-  {
-    "date": "2021-12-27",
-    "total_minted": 1000020743,
-    "chains": [
-      "ethereum"
-    ],
-    "num_txs": 1,
-    "transactions": []
-  },
-  {
-    "date": "2021-12-31",
-    "total_minted": 1000031346,
-    "chains": [
-      "tron"
-    ],
-    "num_txs": 1,
-    "transactions": []
-  },
-  {
-    "date": "2023-03-18",
-    "total_minted": 1009826992,
-    "chains": [
-      "ethereum"
-    ],
-    "num_txs": 1,
-    "transactions": []
-  },
-  {
-    "date": "2023-08-15",
-    "total_minted": 1000000000,
-    "chains": [
-      "tron"
-    ],
-    "num_txs": 1,
-    "transactions": []
-  },
-  {
-    "date": "2024-02-28",
-    "total_minted": 2000000000,
+    "date": "2021-11-09",
+    "total_minted": 2000000000.0,
     "chains": [
       "ethereum"
     ],
     "num_txs": 2,
-    "transactions": []
+    "transactions": [
+      {
+        "amount": 1000000000.0,
+        "chain": "ethereum",
+        "tx": "0xb1e389ab3759e5408afa43f78f3535be4f96103c7686913b492fa8b53d772a52"
+      },
+      {
+        "amount": 1000000000.0,
+        "chain": "ethereum",
+        "tx": "0x397997f66faa69be91335244b4eee750b1ef5bb1dfe39a9fa47428d1b269a7c7"
+      }
+    ]
   },
   {
-    "date": "2024-11-12",
-    "total_minted": 1837833976,
+    "date": "2021-12-09",
+    "total_minted": 2000000000.0,
+    "chains": [
+      "ethereum"
+    ],
+    "num_txs": 2,
+    "transactions": [
+      {
+        "amount": 1000000000.0,
+        "chain": "ethereum",
+        "tx": "0xf1f124c4803125f12473a99326da435a690ea986e0f7c701fa441e637f57ae93"
+      },
+      {
+        "amount": 1000000000.0,
+        "chain": "ethereum",
+        "tx": "0x4908f1ec1eb5709d5a393d9c463137474fbf79f50688d91d8290c13db1fdf3ff"
+      }
+    ]
+  },
+  {
+    "date": "2023-03-04",
+    "total_minted": 2000000000.0,
+    "chains": [
+      "ethereum"
+    ],
+    "num_txs": 2,
+    "transactions": [
+      {
+        "amount": 1000000000.0,
+        "chain": "ethereum",
+        "tx": "0x6ee9ea768ebc29daad9396b5d54a8b6510389b6261458a88adf8a0ed8ed4c11a"
+      },
+      {
+        "amount": 1000000000.0,
+        "chain": "ethereum",
+        "tx": "0x2075eef7946b0671cd89154f362cfc812f71d7847cd1113ceefe496918863d7e"
+      }
+    ]
+  },
+  {
+    "date": "2023-03-14",
+    "total_minted": 1000000000.0,
     "chains": [
       "ethereum"
     ],
     "num_txs": 1,
-    "transactions": []
+    "transactions": [
+      {
+        "amount": 1000000000.0,
+        "chain": "ethereum",
+        "tx": "0x564614c00dfd510d0c5e304844292f27a9982d549363b12bb4e1561fdbbd1cd8"
+      }
+    ]
+  },
+  {
+    "date": "2023-03-16",
+    "total_minted": 1000000000.0,
+    "chains": [
+      "ethereum"
+    ],
+    "num_txs": 1,
+    "transactions": [
+      {
+        "amount": 1000000000.0,
+        "chain": "ethereum",
+        "tx": "0x2b2d7f024c2b5a56094cb6095a01a8c7e27b809689f767f0b7db3c429d2a2cb9"
+      }
+    ]
+  },
+  {
+    "date": "2023-03-24",
+    "total_minted": 1000000000.0,
+    "chains": [
+      "ethereum"
+    ],
+    "num_txs": 1,
+    "transactions": [
+      {
+        "amount": 1000000000.0,
+        "chain": "ethereum",
+        "tx": "0x232cf96e363ab7d02363e99e21e654474048c5a5298a5ab79ea4c5167efbf717"
+      }
+    ]
+  },
+  {
+    "date": "2023-04-20",
+    "total_minted": 1000000000.0,
+    "chains": [
+      "ethereum"
+    ],
+    "num_txs": 1,
+    "transactions": [
+      {
+        "amount": 1000000000.0,
+        "chain": "ethereum",
+        "tx": "0x12845094731312b6b5989e1524a45d6957260c1ba9437d039886b6088b37154a"
+      }
+    ]
+  },
+  {
+    "date": "2023-06-12",
+    "total_minted": 1000000000.0,
+    "chains": [
+      "ethereum"
+    ],
+    "num_txs": 1,
+    "transactions": [
+      {
+        "amount": 1000000000.0,
+        "chain": "ethereum",
+        "tx": "0x96256c18880c04a4a6027136bb40d85ecf3703fae391dc329be5a8bfa884a53c"
+      }
+    ]
+  },
+  {
+    "date": "2023-06-16",
+    "total_minted": 1000000000.0,
+    "chains": [
+      "ethereum"
+    ],
+    "num_txs": 1,
+    "transactions": [
+      {
+        "amount": 1000000000.0,
+        "chain": "ethereum",
+        "tx": "0x8ca4b471932b388f12a2998cf11b04cf6f8643b69726bf59c121c551eee5a63b"
+      }
+    ]
+  },
+  {
+    "date": "2023-11-09",
+    "total_minted": 1000000000.0,
+    "chains": [
+      "ethereum"
+    ],
+    "num_txs": 1,
+    "transactions": [
+      {
+        "amount": 1000000000.0,
+        "chain": "ethereum",
+        "tx": "0xbbbbb31db9aa736e55a76e46ec6c3e84319500d65123560eae9b226ecc146dc9"
+      }
+    ]
+  },
+  {
+    "date": "2023-11-27",
+    "total_minted": 1000000000.0,
+    "chains": [
+      "ethereum"
+    ],
+    "num_txs": 1,
+    "transactions": [
+      {
+        "amount": 1000000000.0,
+        "chain": "ethereum",
+        "tx": "0x5020b394bd55d10233e31235e597e8c826fd83ba0846a57997d8b94008748971"
+      }
+    ]
+  },
+  {
+    "date": "2023-12-25",
+    "total_minted": 1000000000.0,
+    "chains": [
+      "ethereum"
+    ],
+    "num_txs": 1,
+    "transactions": [
+      {
+        "amount": 1000000000.0,
+        "chain": "ethereum",
+        "tx": "0xc46a29dc6d919b322fa18ea022f1bc816a9850c77aac45929d3662a2bb63c20c"
+      }
+    ]
+  },
+  {
+    "date": "2024-01-04",
+    "total_minted": 1000000000.0,
+    "chains": [
+      "ethereum"
+    ],
+    "num_txs": 1,
+    "transactions": [
+      {
+        "amount": 1000000000.0,
+        "chain": "ethereum",
+        "tx": "0x532763a93337ef623300ffd6ddf2e26be8c257c89f3d3f4cef6e387d7531cfed"
+      }
+    ]
+  },
+  {
+    "date": "2024-01-09",
+    "total_minted": 1000000000.0,
+    "chains": [
+      "ethereum"
+    ],
+    "num_txs": 1,
+    "transactions": [
+      {
+        "amount": 1000000000.0,
+        "chain": "ethereum",
+        "tx": "0xbe0ab5a2af603332d63def76222a193d87f409a36f0be81c18efe90917139e24"
+      }
+    ]
+  },
+  {
+    "date": "2024-02-20",
+    "total_minted": 1000000000.0,
+    "chains": [
+      "ethereum"
+    ],
+    "num_txs": 1,
+    "transactions": [
+      {
+        "amount": 1000000000.0,
+        "chain": "ethereum",
+        "tx": "0x6410cdb5d9fcebe216339de180eff10014990f4d9e84b82abe766b24a3c6b65d"
+      }
+    ]
+  },
+  {
+    "date": "2024-03-03",
+    "total_minted": 1000000000.0,
+    "chains": [
+      "ethereum"
+    ],
+    "num_txs": 1,
+    "transactions": [
+      {
+        "amount": 1000000000.0,
+        "chain": "ethereum",
+        "tx": "0x4efe52783009be8a8dfbeada25d66c038f555b3dccaca96c02d0c63c478548c9"
+      }
+    ]
+  },
+  {
+    "date": "2024-03-08",
+    "total_minted": 1000000000.0,
+    "chains": [
+      "ethereum"
+    ],
+    "num_txs": 1,
+    "transactions": [
+      {
+        "amount": 1000000000.0,
+        "chain": "ethereum",
+        "tx": "0xc0c91e0962c6d49db56ff098e50d9b348935fa0bd6df7009368b1fd8763eb38e"
+      }
+    ]
+  },
+  {
+    "date": "2024-03-09",
+    "total_minted": 2000000000.0,
+    "chains": [
+      "ethereum"
+    ],
+    "num_txs": 2,
+    "transactions": [
+      {
+        "amount": 1000000000.0,
+        "chain": "ethereum",
+        "tx": "0x4bc837a0f8645b482901e92091784c8ea11a12a91783477ae45cbde089bf7f95"
+      },
+      {
+        "amount": 1000000000.0,
+        "chain": "ethereum",
+        "tx": "0x40b7f529f3e6403f51ee4319d5f76326a085e25876b1ced49d9d701c5f99cd13"
+      }
+    ]
+  },
+  {
+    "date": "2024-04-05",
+    "total_minted": 1000000000.0,
+    "chains": [
+      "ethereum"
+    ],
+    "num_txs": 1,
+    "transactions": [
+      {
+        "amount": 1000000000.0,
+        "chain": "ethereum",
+        "tx": "0x514d5aadf60ae93cf2a5901318c46b8716b099f2cc76ea7dbe20723b6246ec28"
+      }
+    ]
+  },
+  {
+    "date": "2024-04-19",
+    "total_minted": 1000000000.0,
+    "chains": [
+      "ethereum"
+    ],
+    "num_txs": 1,
+    "transactions": [
+      {
+        "amount": 1000000000.0,
+        "chain": "ethereum",
+        "tx": "0x9259177212b355b6f62a28cd621761141fb098d99ec9207cc3c128e728d58bb3"
+      }
+    ]
+  },
+  {
+    "date": "2024-05-21",
+    "total_minted": 1000000000.0,
+    "chains": [
+      "ethereum"
+    ],
+    "num_txs": 1,
+    "transactions": [
+      {
+        "amount": 1000000000.0,
+        "chain": "ethereum",
+        "tx": "0x239746266776e691af47d3e65f094b18fe1cabdb5090a619b0be43d7e793ce6b"
+      }
+    ]
+  },
+  {
+    "date": "2024-08-13",
+    "total_minted": 1000000000.0,
+    "chains": [
+      "ethereum"
+    ],
+    "num_txs": 1,
+    "transactions": [
+      {
+        "amount": 1000000000.0,
+        "chain": "ethereum",
+        "tx": "0x36dcce38407f1594fe3fe2977587432046dae21102aad963b8298bbe9358f374"
+      }
+    ]
+  },
+  {
+    "date": "2024-08-20",
+    "total_minted": 1000000000.0,
+    "chains": [
+      "ethereum"
+    ],
+    "num_txs": 1,
+    "transactions": [
+      {
+        "amount": 1000000000.0,
+        "chain": "ethereum",
+        "tx": "0x467531bffa8cab2b8ec954591aceafcc578ab5f1789aa32699e8a52f9ab08110"
+      }
+    ]
+  },
+  {
+    "date": "2024-09-16",
+    "total_minted": 1000000000.0,
+    "chains": [
+      "ethereum"
+    ],
+    "num_txs": 1,
+    "transactions": [
+      {
+        "amount": 1000000000.0,
+        "chain": "ethereum",
+        "tx": "0x553b1ac5de98657cdd013d9593069c1eeb2b44d2c65bc4d65496f80bb859803e"
+      }
+    ]
+  },
+  {
+    "date": "2024-11-06",
+    "total_minted": 2000000000.0,
+    "chains": [
+      "ethereum"
+    ],
+    "num_txs": 1,
+    "transactions": [
+      {
+        "amount": 2000000000.0,
+        "chain": "ethereum",
+        "tx": "0xdb8f94f79ce24650b907119a95a4b63c4d1fb12a75a91314bb8a9f25bf868296"
+      }
+    ]
+  },
+  {
+    "date": "2024-11-08",
+    "total_minted": 1000000000.0,
+    "chains": [
+      "ethereum"
+    ],
+    "num_txs": 1,
+    "transactions": [
+      {
+        "amount": 1000000000.0,
+        "chain": "ethereum",
+        "tx": "0xafb2e7632b2b40df0a701aaed97a5379157eaada21f82a09454669fb02f1ec9d"
+      }
+    ]
+  },
+  {
+    "date": "2024-11-09",
+    "total_minted": 1000000000.0,
+    "chains": [
+      "ethereum"
+    ],
+    "num_txs": 1,
+    "transactions": [
+      {
+        "amount": 1000000000.0,
+        "chain": "ethereum",
+        "tx": "0xb3e41e66ed72a46fd436ab8f22e077eca997dcdec2e3a176110ea8227015844f"
+      }
+    ]
+  },
+  {
+    "date": "2024-11-11",
+    "total_minted": 2000000000.0,
+    "chains": [
+      "ethereum"
+    ],
+    "num_txs": 1,
+    "transactions": [
+      {
+        "amount": 2000000000.0,
+        "chain": "ethereum",
+        "tx": "0x33edcdf3d2d67419209102b6d70566bb7fe0e7901b73f5614a65108095cb8647"
+      }
+    ]
+  },
+  {
+    "date": "2024-11-13",
+    "total_minted": 1000000000.0,
+    "chains": [
+      "ethereum"
+    ],
+    "num_txs": 1,
+    "transactions": [
+      {
+        "amount": 1000000000.0,
+        "chain": "ethereum",
+        "tx": "0xb28bef8863f5a8ea3b284e89588f2e1370f468d6e045c06733d7b1e41eca4ec0"
+      }
+    ]
   },
   {
     "date": "2024-11-14",
-    "total_minted": 994196697,
+    "total_minted": 1000000000.0,
     "chains": [
       "ethereum"
     ],
     "num_txs": 1,
-    "transactions": []
+    "transactions": [
+      {
+        "amount": 1000000000.0,
+        "chain": "ethereum",
+        "tx": "0xaab57595bdb5f7d5111fbba8becedd4c3ccf6494333f5038005f4ef522879140"
+      }
+    ]
   },
   {
-    "date": "2024-11-15",
-    "total_minted": 2091208563,
+    "date": "2024-11-18",
+    "total_minted": 2000000000.0,
     "chains": [
-      "ethereum",
-      "tron"
+      "ethereum"
     ],
     "num_txs": 2,
-    "transactions": []
+    "transactions": [
+      {
+        "amount": 1000000000.0,
+        "chain": "ethereum",
+        "tx": "0x12d3679724f623441c29afb856f428d47dafc01b01629e16817faa945bde0d78"
+      },
+      {
+        "amount": 1000000000.0,
+        "chain": "ethereum",
+        "tx": "0xc16839fbf52e365d0cc1cea9900476d487ec89c6ef248da34aa4f07ea22fdaee"
+      }
+    ]
   },
   {
-    "date": "2024-11-21",
-    "total_minted": 1301814480,
+    "date": "2024-11-19",
+    "total_minted": 1000000000.0,
     "chains": [
       "ethereum"
     ],
     "num_txs": 1,
-    "transactions": []
+    "transactions": [
+      {
+        "amount": 1000000000.0,
+        "chain": "ethereum",
+        "tx": "0xbd870754b4302f339fb226fcb71051b250a8e20a5c3aa039ab8686c07a8142ba"
+      }
+    ]
+  },
+  {
+    "date": "2024-11-20",
+    "total_minted": 1000000000.0,
+    "chains": [
+      "ethereum"
+    ],
+    "num_txs": 1,
+    "transactions": [
+      {
+        "amount": 1000000000.0,
+        "chain": "ethereum",
+        "tx": "0xbf37ee12314b41c59672a3b531fcbe4bd73141081b6ea7b70750e62100e2f38a"
+      }
+    ]
+  },
+  {
+    "date": "2024-11-22",
+    "total_minted": 1000000000.0,
+    "chains": [
+      "ethereum"
+    ],
+    "num_txs": 1,
+    "transactions": [
+      {
+        "amount": 1000000000.0,
+        "chain": "ethereum",
+        "tx": "0x89996ae677d34cee077abcfceba8b26c498f72b74cd2dad6708c0aad488eba23"
+      }
+    ]
   },
   {
     "date": "2024-11-23",
-    "total_minted": 2313967943,
-    "chains": [
-      "ethereum",
-      "tron"
-    ],
-    "num_txs": 2,
-    "transactions": []
-  },
-  {
-    "date": "2024-11-24",
-    "total_minted": 1140021996,
+    "total_minted": 2000000000.0,
     "chains": [
       "ethereum"
     ],
     "num_txs": 1,
-    "transactions": []
+    "transactions": [
+      {
+        "amount": 2000000000.0,
+        "chain": "ethereum",
+        "tx": "0xebe04b342bfd80bc2cfc8f492aa19056fff49fb6b0691d907d0f10d9f29aa584"
+      }
+    ]
   },
   {
-    "date": "2024-12-07",
-    "total_minted": 1063539843,
+    "date": "2024-11-29",
+    "total_minted": 1000000000.0,
     "chains": [
-      "tron"
+      "ethereum"
     ],
     "num_txs": 1,
-    "transactions": []
+    "transactions": [
+      {
+        "amount": 1000000000.0,
+        "chain": "ethereum",
+        "tx": "0x8009f879aad8116239cd3d949ff53467ccdfdff89d8399046634b03ce4be22d3"
+      }
+    ]
+  },
+  {
+    "date": "2024-12-02",
+    "total_minted": 1000000000.0,
+    "chains": [
+      "ethereum"
+    ],
+    "num_txs": 1,
+    "transactions": [
+      {
+        "amount": 1000000000.0,
+        "chain": "ethereum",
+        "tx": "0xb1682d279a30271d55071f65c5f28baa6c31e70ef5d1494732de828bed8dfe57"
+      }
+    ]
+  },
+  {
+    "date": "2024-12-05",
+    "total_minted": 1000000000.0,
+    "chains": [
+      "ethereum"
+    ],
+    "num_txs": 1,
+    "transactions": [
+      {
+        "amount": 1000000000.0,
+        "chain": "ethereum",
+        "tx": "0x9a67e9ee1face4c1baeea65cf101a71420d692f6fd26aeba073e25448f51b0d1"
+      }
+    ]
+  },
+  {
+    "date": "2024-12-06",
+    "total_minted": 2000000000.0,
+    "chains": [
+      "ethereum"
+    ],
+    "num_txs": 1,
+    "transactions": [
+      {
+        "amount": 2000000000.0,
+        "chain": "ethereum",
+        "tx": "0x9f640bc3c321e83705770536d6997a0d3de6011b9b15688abab0f904c45a4586"
+      }
+    ]
+  },
+  {
+    "date": "2024-12-11",
+    "total_minted": 1000000000.0,
+    "chains": [
+      "ethereum"
+    ],
+    "num_txs": 1,
+    "transactions": [
+      {
+        "amount": 1000000000.0,
+        "chain": "ethereum",
+        "tx": "0x6743bd8f886c2d781fc6dc99eba9c79ab8d131b8ad3b275d9a55a65711c00129"
+      }
+    ]
   },
   {
     "date": "2024-12-12",
-    "total_minted": 1052491999,
+    "total_minted": 1000000000.0,
     "chains": [
       "ethereum"
     ],
     "num_txs": 1,
-    "transactions": []
+    "transactions": [
+      {
+        "amount": 1000000000.0,
+        "chain": "ethereum",
+        "tx": "0x190b6e5a5c359c575a18f7b455f08bf166ceec9785b5679ef5091a385a67daec"
+      }
+    ]
   },
   {
-    "date": "2025-02-05",
-    "total_minted": 1346643604,
+    "date": "2025-03-02",
+    "total_minted": 1000000000.0,
+    "chains": [
+      "ethereum"
+    ],
+    "num_txs": 1,
+    "transactions": [
+      {
+        "amount": 1000000000.0,
+        "chain": "ethereum",
+        "tx": "0x32962e897ffcd1ff059193233f3e24809ce2ceee0ecf3b5ea512ab348972cead"
+      }
+    ]
+  },
+  {
+    "date": "2025-04-12",
+    "total_minted": 1000000000.0,
     "chains": [
       "tron"
     ],
     "num_txs": 1,
-    "transactions": []
+    "transactions": [
+      {
+        "amount": 1000000000.0,
+        "chain": "tron",
+        "tx": "c30b84bd0757f0c1d0165e2a97d0b4ca822197bd139ffd9c39549dd778d73979"
+      }
+    ]
   },
   {
-    "date": "2025-06-25",
-    "total_minted": 1485630128,
+    "date": "2025-04-21",
+    "total_minted": 1000000000.0,
+    "chains": [
+      "tron"
+    ],
+    "num_txs": 1,
+    "transactions": [
+      {
+        "amount": 1000000000.0,
+        "chain": "tron",
+        "tx": "d24e2789e5e0b2c503fe6fcb0b25355136f8f27427c1e8d072a2b46d213680a0"
+      }
+    ]
+  },
+  {
+    "date": "2025-04-22",
+    "total_minted": 1000000000.0,
+    "chains": [
+      "tron"
+    ],
+    "num_txs": 1,
+    "transactions": [
+      {
+        "amount": 1000000000.0,
+        "chain": "tron",
+        "tx": "159cb9f04d16af230df8b8efb7fc3a7e339bd2e9ace15e4eb40cb6483e4db1a2"
+      }
+    ]
+  },
+  {
+    "date": "2025-04-28",
+    "total_minted": 1000000000.0,
+    "chains": [
+      "tron"
+    ],
+    "num_txs": 1,
+    "transactions": [
+      {
+        "amount": 1000000000.0,
+        "chain": "tron",
+        "tx": "da62b62783d85c48ba686bacab4beb463a6c713108150021ec56d34720f8519c"
+      }
+    ]
+  },
+  {
+    "date": "2025-04-29",
+    "total_minted": 2000000000.0,
+    "chains": [
+      "ethereum"
+    ],
+    "num_txs": 2,
+    "transactions": [
+      {
+        "amount": 1000000000.0,
+        "chain": "ethereum",
+        "tx": "0x93525816360580184b7ce7565fce3d9ee0514df9b2141cee9420ef8a6340abc7"
+      },
+      {
+        "amount": 1000000000.0,
+        "chain": "ethereum",
+        "tx": "0x7e4e3c0b156b68c81d6f1a56913dcf1ded9fcd84604917ca8393f5e69a6a34a1"
+      }
+    ]
+  },
+  {
+    "date": "2025-05-05",
+    "total_minted": 1000000000.0,
+    "chains": [
+      "tron"
+    ],
+    "num_txs": 1,
+    "transactions": [
+      {
+        "amount": 1000000000.0,
+        "chain": "tron",
+        "tx": "1cf6a6a6421992f9eb9d29c296d1f7cec2605219053cd3068325d735e8b945b1"
+      }
+    ]
+  },
+  {
+    "date": "2025-05-07",
+    "total_minted": 1000000000.0,
+    "chains": [
+      "tron"
+    ],
+    "num_txs": 1,
+    "transactions": [
+      {
+        "amount": 1000000000.0,
+        "chain": "tron",
+        "tx": "9ee81c3bac832e15461a5e62362e9029732dbeabfee3fb888bdcc4bdce3b53a3"
+      }
+    ]
+  },
+  {
+    "date": "2025-05-15",
+    "total_minted": 2000000000.0,
+    "chains": [
+      "tron"
+    ],
+    "num_txs": 2,
+    "transactions": [
+      {
+        "amount": 1000000000.0,
+        "chain": "tron",
+        "tx": "7ca69d7e09dfd4cfe0471123fb880f266a698f983d9745077aa7f6a1cf765551"
+      },
+      {
+        "amount": 1000000000.0,
+        "chain": "tron",
+        "tx": "bdb2424db418dff579b37543add4ebec90cd3f95cf2acf7c81803abf4603f3f3"
+      }
+    ]
+  },
+  {
+    "date": "2025-05-21",
+    "total_minted": 2000000000.0,
+    "chains": [
+      "tron"
+    ],
+    "num_txs": 2,
+    "transactions": [
+      {
+        "amount": 1000000000.0,
+        "chain": "tron",
+        "tx": "eb62b362475a6ecbc1a19807fe551dd3573df48be8a75d9109490c76bbbbd7be"
+      },
+      {
+        "amount": 1000000000.0,
+        "chain": "tron",
+        "tx": "dc5f50aceeaa87a9b2473c1b3df28c51b934d2788db56a9477e610e0a09308b6"
+      }
+    ]
+  },
+  {
+    "date": "2025-06-09",
+    "total_minted": 1000000000.0,
+    "chains": [
+      "tron"
+    ],
+    "num_txs": 1,
+    "transactions": [
+      {
+        "amount": 1000000000.0,
+        "chain": "tron",
+        "tx": "ae911da653dfb922536a3247957b4e20a36921a085b558c8430b2997824b1d4c"
+      }
+    ]
+  },
+  {
+    "date": "2025-06-18",
+    "total_minted": 1000000000.0,
     "chains": [
       "ethereum"
     ],
     "num_txs": 1,
-    "transactions": []
+    "transactions": [
+      {
+        "amount": 1000000000.0,
+        "chain": "ethereum",
+        "tx": "0x17349fa81bff537e93ba8e4efc87c27678fddb8900858d15420873f477610bf2"
+      }
+    ]
+  },
+  {
+    "date": "2025-06-22",
+    "total_minted": 2000000000.0,
+    "chains": [
+      "tron"
+    ],
+    "num_txs": 2,
+    "transactions": [
+      {
+        "amount": 1000000000.0,
+        "chain": "tron",
+        "tx": "f55ace7fc2c87ff1165282e256b88f537c37cd5794a7d91c6af11ca511e31aa0"
+      },
+      {
+        "amount": 1000000000.0,
+        "chain": "tron",
+        "tx": "d4b1cadda4f64c0c3fc74df1c2287fcb525990f7347effb83f76cd2fb885e8cb"
+      }
+    ]
+  },
+  {
+    "date": "2025-07-03",
+    "total_minted": 1000000000.0,
+    "chains": [
+      "ethereum"
+    ],
+    "num_txs": 1,
+    "transactions": [
+      {
+        "amount": 1000000000.0,
+        "chain": "ethereum",
+        "tx": "0x46b9d3d1e3038dd4f5e23d316df90f4eaf282050d220f8c823ad7b22bfaa05da"
+      }
+    ]
+  },
+  {
+    "date": "2025-07-10",
+    "total_minted": 1000000000.0,
+    "chains": [
+      "tron"
+    ],
+    "num_txs": 1,
+    "transactions": [
+      {
+        "amount": 1000000000.0,
+        "chain": "tron",
+        "tx": "e647c067b811d52b673677e8dad61c66e6b2276d69eafc6ec06932f33c4829f6"
+      }
+    ]
+  },
+  {
+    "date": "2025-07-16",
+    "total_minted": 2000000000.0,
+    "chains": [
+      "ethereum"
+    ],
+    "num_txs": 2,
+    "transactions": [
+      {
+        "amount": 1000000000.0,
+        "chain": "ethereum",
+        "tx": "0x9b03e193aace0f45ea611e8ef6f323bc4f97d4db62513a36ce5b08d33ce24ff0"
+      },
+      {
+        "amount": 1000000000.0,
+        "chain": "ethereum",
+        "tx": "0x41e717cf2debb8a15ad99579e54c39b00fc9f3d50552f2f0de9465f286d5e679"
+      }
+    ]
   },
   {
     "date": "2025-07-17",
-    "total_minted": 1370300093,
+    "total_minted": 1000000000.0,
+    "chains": [
+      "ethereum"
+    ],
+    "num_txs": 1,
+    "transactions": [
+      {
+        "amount": 1000000000.0,
+        "chain": "ethereum",
+        "tx": "0x78a6f8cc581a2a01755036b51208e3d4320abc7d42ee02f5d25a00b09c9e2583"
+      }
+    ]
+  },
+  {
+    "date": "2025-07-24",
+    "total_minted": 2000000000.0,
+    "chains": [
+      "ethereum"
+    ],
+    "num_txs": 2,
+    "transactions": [
+      {
+        "amount": 1000000000.0,
+        "chain": "ethereum",
+        "tx": "0x57587f393ed88d9f9383b787fd51f921ff48379eabf61f8e22de9328c2a2039b"
+      },
+      {
+        "amount": 1000000000.0,
+        "chain": "ethereum",
+        "tx": "0x959a774c341223421a3f4d268ad4c9496c1678bd64f709b7480dfe9968e87b4d"
+      }
+    ]
+  },
+  {
+    "date": "2025-07-28",
+    "total_minted": 1000000000.0,
     "chains": [
       "tron"
     ],
     "num_txs": 1,
-    "transactions": []
+    "transactions": [
+      {
+        "amount": 1000000000.0,
+        "chain": "tron",
+        "tx": "3c7335fc5dd9bf02d2d8d5df2cc991c7e7d2cc9e35695e5ec5d6922da18e93a6"
+      }
+    ]
   },
   {
     "date": "2025-08-15",
-    "total_minted": 1063400012,
-    "chains": [
-      "tron"
-    ],
-    "num_txs": 1,
-    "transactions": []
-  },
-  {
-    "date": "2025-08-29",
-    "total_minted": 1045576767,
+    "total_minted": 1000000000.0,
     "chains": [
       "ethereum"
     ],
     "num_txs": 1,
-    "transactions": []
+    "transactions": [
+      {
+        "amount": 1000000000.0,
+        "chain": "ethereum",
+        "tx": "0x64fc45bb61f7d8a8774d7573a37c67cdff22c9c790339e135c047ef9e21e6c66"
+      }
+    ]
+  },
+  {
+    "date": "2025-08-20",
+    "total_minted": 1000000000.0,
+    "chains": [
+      "ethereum"
+    ],
+    "num_txs": 1,
+    "transactions": [
+      {
+        "amount": 1000000000.0,
+        "chain": "ethereum",
+        "tx": "0x50b1bd6a926588803c885d92088221d8e6274cae85e9a3b2fb5ba32ed6932b68"
+      }
+    ]
+  },
+  {
+    "date": "2025-08-27",
+    "total_minted": 1000000000.0,
+    "chains": [
+      "ethereum"
+    ],
+    "num_txs": 1,
+    "transactions": [
+      {
+        "amount": 1000000000.0,
+        "chain": "ethereum",
+        "tx": "0x5161b75bc3a86da982d3342c038e1b5528cbd4de8bd2b7d8da2d061156437005"
+      }
+    ]
+  },
+  {
+    "date": "2025-08-28",
+    "total_minted": 1000000000.0,
+    "chains": [
+      "ethereum"
+    ],
+    "num_txs": 1,
+    "transactions": [
+      {
+        "amount": 1000000000.0,
+        "chain": "ethereum",
+        "tx": "0x780c1debbaf97d9288981da3a80b0449c4c8a877635ba05e1672eb88eced5f0c"
+      }
+    ]
+  },
+  {
+    "date": "2025-08-30",
+    "total_minted": 1000000000.0,
+    "chains": [
+      "ethereum"
+    ],
+    "num_txs": 1,
+    "transactions": [
+      {
+        "amount": 1000000000.0,
+        "chain": "ethereum",
+        "tx": "0xc8e01abfe52ddde2d81436940d285d4bbf15dd0a7c8926b174c8f885c7f9d4f0"
+      }
+    ]
   },
   {
     "date": "2025-09-04",
-    "total_minted": 1413664084,
-    "chains": [
-      "tron"
-    ],
-    "num_txs": 1,
-    "transactions": []
-  },
-  {
-    "date": "2025-09-05",
-    "total_minted": 2300756292,
-    "chains": [
-      "tron"
-    ],
-    "num_txs": 1,
-    "transactions": []
-  },
-  {
-    "date": "2025-10-11",
-    "total_minted": 1631221270,
+    "total_minted": 2000000000.0,
     "chains": [
       "ethereum"
     ],
     "num_txs": 1,
-    "transactions": []
+    "transactions": [
+      {
+        "amount": 2000000000.0,
+        "chain": "ethereum",
+        "tx": "0x270ada3a3f28f8570e240946ac87644afd2abdca92de1b799bffe780b5f0e912"
+      }
+    ]
   },
   {
-    "date": "2026-02-09",
-    "total_minted": 1085930361,
-    "chains": [
-      "tron"
-    ],
-    "num_txs": 1,
-    "transactions": []
-  },
-  {
-    "date": "2026-02-23",
-    "total_minted": 972300000,
+    "date": "2025-09-12",
+    "total_minted": 1000000000.0,
     "chains": [
       "ethereum"
     ],
     "num_txs": 1,
-    "transactions": []
+    "transactions": [
+      {
+        "amount": 1000000000.0,
+        "chain": "ethereum",
+        "tx": "0x96103ee11ccdfe9b6f82d4dafef276b9d5335ac8470da852361055a58a351155"
+      }
+    ]
+  },
+  {
+    "date": "2025-09-14",
+    "total_minted": 1000000000.0,
+    "chains": [
+      "ethereum"
+    ],
+    "num_txs": 1,
+    "transactions": [
+      {
+        "amount": 1000000000.0,
+        "chain": "ethereum",
+        "tx": "0xfcfc52f1faedb8c700b01e394b162d9365883eef130a1e63e9b46e68217a632c"
+      }
+    ]
+  },
+  {
+    "date": "2025-09-16",
+    "total_minted": 2000000000.0,
+    "chains": [
+      "ethereum"
+    ],
+    "num_txs": 2,
+    "transactions": [
+      {
+        "amount": 1000000000.0,
+        "chain": "ethereum",
+        "tx": "0x80b22c3aa7df9567995d0fbe63e8e42887f760070f6ee7367d641a40588e390b"
+      },
+      {
+        "amount": 1000000000.0,
+        "chain": "ethereum",
+        "tx": "0xe8de20a40616b1c22563b5faafb304e195face5e767b97264c8a77dbceaf64a6"
+      }
+    ]
+  },
+  {
+    "date": "2025-09-19",
+    "total_minted": 1000000000.0,
+    "chains": [
+      "ethereum"
+    ],
+    "num_txs": 1,
+    "transactions": [
+      {
+        "amount": 1000000000.0,
+        "chain": "ethereum",
+        "tx": "0xae2efe2230ecfe5a380e969413a932a7dd98747558ab3a994b35216692e3e34d"
+      }
+    ]
+  },
+  {
+    "date": "2025-09-22",
+    "total_minted": 1000000000.0,
+    "chains": [
+      "ethereum"
+    ],
+    "num_txs": 1,
+    "transactions": [
+      {
+        "amount": 1000000000.0,
+        "chain": "ethereum",
+        "tx": "0xe7e5356603394e2a4911c7edd7813cd73e6dc676040a01c1c4458ae79d484622"
+      }
+    ]
+  },
+  {
+    "date": "2025-09-25",
+    "total_minted": 1000000000.0,
+    "chains": [
+      "ethereum"
+    ],
+    "num_txs": 1,
+    "transactions": [
+      {
+        "amount": 1000000000.0,
+        "chain": "ethereum",
+        "tx": "0x1024b143ce91aed92ef27b8c74b80579f8a59bbbed9f834e2c4a6fd00a939ce6"
+      }
+    ]
+  },
+  {
+    "date": "2025-09-27",
+    "total_minted": 1000000000.0,
+    "chains": [
+      "ethereum"
+    ],
+    "num_txs": 1,
+    "transactions": [
+      {
+        "amount": 1000000000.0,
+        "chain": "ethereum",
+        "tx": "0x4b59cda5e7288767e755320ddc4e720f2aa690f3d171c9d3e19cc863d24daa41"
+      }
+    ]
+  },
+  {
+    "date": "2025-10-02",
+    "total_minted": 2000000000.0,
+    "chains": [
+      "ethereum"
+    ],
+    "num_txs": 2,
+    "transactions": [
+      {
+        "amount": 1000000000.0,
+        "chain": "ethereum",
+        "tx": "0xe2c4c9df9c91b1c0d3c72b025765d48768ec0ee99a3df7730d34218c5e85251b"
+      },
+      {
+        "amount": 1000000000.0,
+        "chain": "ethereum",
+        "tx": "0xc29d2046c2d553a7a195a47313265e7ae175314660136d59e16a06adfa62a231"
+      }
+    ]
+  },
+  {
+    "date": "2025-10-10",
+    "total_minted": 1000000000.0,
+    "chains": [
+      "ethereum"
+    ],
+    "num_txs": 1,
+    "transactions": [
+      {
+        "amount": 1000000000.0,
+        "chain": "ethereum",
+        "tx": "0xe0b5ff0ea1599e56775825601058856d3c2fc4e008bda2ad22c807627d6a789d"
+      }
+    ]
+  },
+  {
+    "date": "2025-10-13",
+    "total_minted": 1000000000.0,
+    "chains": [
+      "ethereum"
+    ],
+    "num_txs": 1,
+    "transactions": [
+      {
+        "amount": 1000000000.0,
+        "chain": "ethereum",
+        "tx": "0x8ede4feb86e23ebe37c8c149e7a5e71ffb626c7548413cdf69ab471b38d90757"
+      }
+    ]
+  },
+  {
+    "date": "2025-10-15",
+    "total_minted": 1000000000.0,
+    "chains": [
+      "ethereum"
+    ],
+    "num_txs": 1,
+    "transactions": [
+      {
+        "amount": 1000000000.0,
+        "chain": "ethereum",
+        "tx": "0x80e1ffacdfa5e99369034976cf890df9c32d18fdda4cbd7abbc8a1bde915876e"
+      }
+    ]
+  },
+  {
+    "date": "2025-10-18",
+    "total_minted": 1000000000.0,
+    "chains": [
+      "ethereum"
+    ],
+    "num_txs": 1,
+    "transactions": [
+      {
+        "amount": 1000000000.0,
+        "chain": "ethereum",
+        "tx": "0xb97a13e8a97b52109a0d32b21b5d32b8f8b61cc4d7f8c802841448456480df8f"
+      }
+    ]
+  },
+  {
+    "date": "2025-10-21",
+    "total_minted": 1000000000.0,
+    "chains": [
+      "ethereum"
+    ],
+    "num_txs": 1,
+    "transactions": [
+      {
+        "amount": 1000000000.0,
+        "chain": "ethereum",
+        "tx": "0xc79dacdf594b9c4b2860ed3b82af26615c77fe9f8d86f887688009e2c731653e"
+      }
+    ]
+  },
+  {
+    "date": "2025-11-10",
+    "total_minted": 1000000000.0,
+    "chains": [
+      "ethereum"
+    ],
+    "num_txs": 1,
+    "transactions": [
+      {
+        "amount": 1000000000.0,
+        "chain": "ethereum",
+        "tx": "0x4d5c0391b622a015fa6a9bd6edc0573fe68c35bdfadc7f667f462478b79cfb30"
+      }
+    ]
+  },
+  {
+    "date": "2025-12-02",
+    "total_minted": 1000000000.0,
+    "chains": [
+      "tron"
+    ],
+    "num_txs": 1,
+    "transactions": [
+      {
+        "amount": 1000000000.0,
+        "chain": "tron",
+        "tx": "a39c91b83f819bc35deb7d53b2f29e91188d82f0cd4c0314bb5adaa64030d1b3"
+      }
+    ]
+  },
+  {
+    "date": "2025-12-08",
+    "total_minted": 1000000000.0,
+    "chains": [
+      "tron"
+    ],
+    "num_txs": 1,
+    "transactions": [
+      {
+        "amount": 1000000000.0,
+        "chain": "tron",
+        "tx": "3883a8d3b3c32e306d0ae5068d9f8d27f76b527f9dfb89b9bd25157a0f4f0d43"
+      }
+    ]
+  },
+  {
+    "date": "2025-12-30",
+    "total_minted": 1000000000.0,
+    "chains": [
+      "tron"
+    ],
+    "num_txs": 1,
+    "transactions": [
+      {
+        "amount": 1000000000.0,
+        "chain": "tron",
+        "tx": "571e4c1ea5385078881a84f0260a5dde3303da20ed81056a3b50f191dfbb31a8"
+      }
+    ]
+  },
+  {
+    "date": "2026-01-09",
+    "total_minted": 1000000000.0,
+    "chains": [
+      "tron"
+    ],
+    "num_txs": 1,
+    "transactions": [
+      {
+        "amount": 1000000000.0,
+        "chain": "tron",
+        "tx": "a01ecf6a23c742711d5a358297f63db870fcef8b37a4e74008f430d249fbaf41"
+      }
+    ]
+  },
+  {
+    "date": "2026-01-20",
+    "total_minted": 1000000000.0,
+    "chains": [
+      "tron"
+    ],
+    "num_txs": 1,
+    "transactions": [
+      {
+        "amount": 1000000000.0,
+        "chain": "tron",
+        "tx": "65e35f77df154f56d4924f80c4a2b47ec36dd0152c978039aec8461a89503dc3"
+      }
+    ]
+  },
+  {
+    "date": "2026-02-04",
+    "total_minted": 1000000000.0,
+    "chains": [
+      "tron"
+    ],
+    "num_txs": 1,
+    "transactions": [
+      {
+        "amount": 1000000000.0,
+        "chain": "tron",
+        "tx": "88d1462cb431878b5794bb1de69346788a940a693b56ec0243a8609c92682f66"
+      }
+    ]
+  },
+  {
+    "date": "2026-02-06",
+    "total_minted": 1000000000.0,
+    "chains": [
+      "tron"
+    ],
+    "num_txs": 1,
+    "transactions": [
+      {
+        "amount": 1000000000.0,
+        "chain": "tron",
+        "tx": "ca9293d0f1129fd991149b7d6910344f73bdadd80776c27e678339dddc8d5345"
+      }
+    ]
+  },
+  {
+    "date": "2026-03-11",
+    "total_minted": 1000000000.0,
+    "chains": [
+      "tron"
+    ],
+    "num_txs": 1,
+    "transactions": [
+      {
+        "amount": 1000000000.0,
+        "chain": "tron",
+        "tx": "15cf76101d1b7d94e0f445fb98a0eda338f49631f764c4e158f9e9b725056a90"
+      }
+    ]
   }
 ]
