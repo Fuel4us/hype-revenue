@@ -16,7 +16,7 @@ import { getDashboardData } from './api';
 import TradingViewWidget from './TradingViewWidget';
 import infinityGif from './assets/infinity-hands.gif';
 import TetherMintsChart from "./TetherMintsChart";
-import TetherSupplyGrowthChart from "./TetherSupplyGrowthChart";
+import TetherMintsDetailedChart from "./TetherMintsDetailedChart";
 
 const RANGE_OPTIONS = [
   { label: '1M', days: 30 },
@@ -484,8 +484,8 @@ const App = () => {
         {/* CHART 4: Tether Mints Chart */}
         <TetherMintsChart />
 
-        {/* CHART 5: Tether Supply Growth */}
-        <TetherSupplyGrowthChart />
+        {/* CHART 5: Detailed Tether Mints */}
+        <TetherMintsDetailedChart />
 
         <footer className="mt-16 pt-8 border-t border-gray-900 flex flex-col md:flex-row justify-between items-center gap-4 text-gray-500 text-[10px] uppercase tracking-widest font-bold">
           <p>© 2026 Hyperliquid Community Dashboard</p>
