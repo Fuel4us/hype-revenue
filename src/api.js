@@ -151,11 +151,14 @@ export const getDashboardData = async (timeframes = [7, 30]) => {
   
   // Ensure "Today" is in the dataset if it's not already
   if (liveOI && mergedData[mergedData.length - 1]?.date !== todayDate) {
+    // Carry forward the last known fees/price to avoid "0" drop-off
+    const lastEntry = mergedData[mergedData.length - 1] || {};
+    
     mergedData.push({
       timestamp: Math.floor(Date.now() / 1000),
       date: todayDate,
-      dailyFees: 0,
-      price: priceMap.get(todayDate) || null,
+      dailyFees: lastEntry.dailyFees || 0, 
+      price: priceMap.get(todayDate) || lastEntry.price || null,
       openInterest: liveOI
     });
   } else if (liveOI && mergedData[mergedData.length - 1]?.date === todayDate) {

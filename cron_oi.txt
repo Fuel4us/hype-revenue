@@ -1,3 +1,7 @@
-# Daily OI Tracker
-# Runs at 00:30 UTC daily to fetch the previous day's archived data
-30 0 * * * cd /home/gonca/.openclaw/workspace/hype-dashboard && /usr/bin/python3 build_history.py >> /home/gonca/.openclaw/workspace/hype-dashboard/oi_tracker.log 2>&1 && /usr/bin/npm run build && /usr/bin/npx wrangler pages deploy dist --project-name=hype-revenue
+# Daily Live OI Tracker (runs at 00:05 UTC)
+# Fetches the live Open Interest snapshot and appends it to oi_history.json
+5 0 * * * cd /home/gonca/.openclaw/workspace/hype-dashboard && /usr/bin/python3 fetch_daily_live_oi.py >> /home/gonca/.openclaw/workspace/hype-dashboard/oi_tracker_live.log 2>&1 && /usr/bin/npm run build && /usr/bin/npx wrangler pages deploy dist --project-name=hype-revenue
+
+# Bi-weekly S3 Archive Sync (runs at 01:00 UTC on the 1st and 15th of every month)
+# Fetches the historical S3 CSVs and overrides any live data with the "official" numbers
+0 1 1,15 * * cd /home/gonca/.openclaw/workspace/hype-dashboard && /usr/bin/python3 build_history.py >> /home/gonca/.openclaw/workspace/hype-dashboard/oi_tracker_s3.log 2>&1 && /usr/bin/npm run build && /usr/bin/npx wrangler pages deploy dist --project-name=hype-revenue
